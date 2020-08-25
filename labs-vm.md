@@ -112,7 +112,7 @@ After each lab, please ensure that you delete the created resources (so as to no
 
 * Create an Ubuntu VM using steps from lab #1 above.
 
-* Note the details associated with VM's existing NIC (virtual network, subnets and private IP addresses).
+* Note the details associated with the VM's existing NIC (virtual network, subnets and private IP addresses).
 
     ```bash
     az vm nic list -g <resource-group-name> --vm-name <virtual-machine-name>
@@ -158,4 +158,18 @@ After each lab, please ensure that you delete the created resources (so as to no
     az vm nic show -g <resource-group-name> --vm-name <virtual-machine-name> --nic <existing-NIC-name>
 
     az vm nic show -g <resource-group-name> --vm-name <virtual-machine-name> --nic <new-NIC-name>
+    ```
+
+-----
+
+## #5: (@todo) Procure additional public IP for existing VM
+
+* Create an Ubuntu VM using steps from lab #1 above.
+
+* Note the details associated with the VM's existing NIC (virtual network, subnets and private IP addresses).
+
+    ```bash
+    az vm nic list -g <resource-group-name> --vm-name <virtual-machine-name>
+
+    az vm nic show -g <resource-group-name> --vm-name <virtual-machine-name> --nic <existing-NIC-name>
     ```
