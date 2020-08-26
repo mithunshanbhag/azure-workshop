@@ -14,3 +14,5 @@ Contents | Labs
 [Azure Messaging](https://github.com/mithunshanbhag/azure-fundamentals-workshop/projects/14) | [Link](./labs/messaging.md)
 [Azure DevOps](https://github.com/mithunshanbhag/azure-fundamentals-workshop/projects/11) | [Link](./labs/devops.md)
 [Azure Monitoring](https://github.com/mithunshanbhag/azure-fundamentals-workshop/projects/10) | [Link](./labs/monitoring.md)
+
+_This page can be accessed from [http://bit.ly/azfunwk](http://bit.ly/azfunwk)_
