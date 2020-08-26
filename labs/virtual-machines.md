@@ -2,11 +2,15 @@
 
 ## Prerequisites
 
-Log into Azure CLI with your Azure credentials.
+* Log into Azure CLI with your Azure credentials.
 
 ## Notes
 
-After each lab, please ensure that you delete the created resources (so as to not accrue costs).
+* After each lab, please ensure that you delete the created resources (so as to not accrue costs).
+
+## Resources
+
+* Azure VM Documentation: [Windows](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/) | [Linux](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/)
 
 -----
 
