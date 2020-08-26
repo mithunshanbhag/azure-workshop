@@ -112,7 +112,13 @@
 
 -----
 
-## #4: Procure additional private IP for existing VM
+## #4: Attach an additional data disk to a VM
+
+* @todo
+
+-----
+
+## #5: Procure additional private IP for existing VM
 
 * Create an Ubuntu VM using steps from lab #1 above.
 
@@ -166,7 +172,7 @@
 
 -----
 
-## #5: (@todo) Procure additional public IP for existing VM
+## #6: (@todo) Procure additional public IP for existing VM
 
 * Create an Ubuntu VM using steps from lab #1 above.
 
