@@ -112,7 +112,60 @@
 
 -----
 
-## #4: Procure additional private IP for existing VM
+## #4: Attach an additional data disk to a VM
+
+* Create an Ubuntu VM using steps from lab #1 above.
+
+* Create an empty managed disk (ensure that it's in the same region as the VM).
+
+    ```bash
+    az disk create -n <new-disk-name> \
+        -g <resource-group-name> \
+        -l centralindia \
+        --size-gb 10 --sku Standard_LRS
+    ```
+
+* Attach the newly created disk to the existing VM
+
+    ```bash
+    az vm disk attach -n <new-disk-name> \
+        -g <resource-group-name> \
+        --vm-name <virtual-machine-name>
+    ```
+
+* For the data disk to be usable, it has to be mounted from the VM.
+
+    ```bash
+    ssh azureuser@<public-ip-of-virtual-machine>
+
+    # see existing disks by running the 'df' command
+    df
+
+    # partition the disk with the 'parted' command
+    sudo parted /dev/sdc --script mklabel gpt mkpart xfspart xfs 0% 100%
+
+    # write a file system to the partition by using 'mkfs' command
+    sudo mkfs.xfs /dev/sdc1
+
+    # use 'partprobe' command to make the OS aware of the change
+    sudo partprobe /dev/sdc1
+
+    # mount the new disk so that it is accessible in the operating system.
+    sudo mkdir /datadrive && sudo mount /dev/sdc1 /datadrive
+
+    # run 'df' command again to verify if mounted
+    df
+
+    # navigate to the mounted device
+    cd /datadrive
+
+    # note: to ensure that the drive is remounted after a reboot, it must be
+    # added to the '/etc/fstab' file.
+    ```
+
+-----
+
+## #5: Procure additional private IP for existing VM
 
 * Create an Ubuntu VM using steps from lab #1 above.
 
@@ -166,7 +219,7 @@
 
 -----
 
-## #5: (@todo) Procure additional public IP for existing VM
+## #6: (@todo) Procure additional public IP for existing VM
 
 * Create an Ubuntu VM using steps from lab #1 above.
 
