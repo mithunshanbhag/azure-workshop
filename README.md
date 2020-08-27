@@ -1,7 +1,14 @@
 # Azure Fundamentals Workshop
 
-Contents | Labs
----------|-----
+## Notes
+
+* This page can be accessed from [http://bit.ly/azfunwk](http://bit.ly/azfunwk)
+* [Lab prerequisites](./labs/prerequisites.md)
+
+## Content
+
+Topics | Labs
+-------|-----
 [Azure Basics](https://github.com/mithunshanbhag/azure-fundamentals-workshop/projects/4) | [Link](./labs/basics.md)
 [Azure Compute (Virtual Machines)](https://github.com/mithunshanbhag/azure-fundamentals-workshop/projects/9) | [Link](./labs/virtual-machines.md)
 [Azure Compute (App Service)](https://github.com/mithunshanbhag/azure-fundamentals-workshop/projects/2) | [Link](./labs/app-service.md)
@@ -14,5 +21,3 @@ Contents | Labs
 [Azure Messaging](https://github.com/mithunshanbhag/azure-fundamentals-workshop/projects/14) | [Link](./labs/messaging.md)
 [Azure DevOps](https://github.com/mithunshanbhag/azure-fundamentals-workshop/projects/11) | [Link](./labs/devops.md)
 [Azure Monitoring](https://github.com/mithunshanbhag/azure-fundamentals-workshop/projects/10) | [Link](./labs/monitoring.md)
-
-_This page can be accessed from [http://bit.ly/azfunwk](http://bit.ly/azfunwk)_

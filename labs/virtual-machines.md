@@ -1,9 +1,5 @@
 # Labs: Virtual Machines
 
-## Prerequisites
-
-* Log into Azure CLI with your Azure credentials.
-
 ## Notes
 
 * After each lab, please ensure that you delete the created resources (so as to not accrue costs).
@@ -165,68 +161,43 @@
 
 -----
 
-## #5: Procure additional private IP for existing VM
+## #5: VM restoration using a snapshot
 
 * Create an Ubuntu VM using steps from lab #1 above.
 
-* Note the details associated with the VM's existing NIC (virtual network, subnets and private IP addresses).
-
+* Note the resource ID of the OS disk
+  
     ```bash
-    az vm nic list -g <resource-group-name> --vm-name <virtual-machine-name>
-
-    az vm nic show -g <resource-group-name> --vm-name <virtual-machine-name> --nic <existing-NIC-name>
+    osDiskId=$(az vm show -n <virtual-machine-name> -g <resource-group-name> --query "storageProfile.osDisk.managedDisk.id" -o tsv)
     ```
 
-* Create a new NIC
+* Create a snapshot of the OS disk (ensure that location is explicitly mentioned)
 
     ```bash
-    az network nic create -n <new-NIC-name> \
+    az snapshot create -g <resource-group-name> -n <snapshot-name> --source $osDiskId -l centralindia
+    ```
+
+* Create a new managed OS disk from this snapshot
+
+    ```bash
+    az disk create -g <resource-group-name> -l centralindia -n <new-os-disk-name> --source <snapshot-name>
+    ```
+
+* Delete the original VM
+
+    ```bash
+    az vm delete -g <resource-group-name> -n <virtual-machine-name>
+    ```
+
+* Recreate the original VM from the newly hydrated OS disk (which itself was created from the snapshot)
+
+    ```bash
+    az vm create \
+        -n <virtual-machine-name> \
+        -g <resource-group-name> \
         -l centralindia \
-        -g <resource-group-name> \
-        --vnet-name <virtual-network-name> \
-        --subnet <subnet-name>
-    ```
-
-* Stop-deallocate the VM
-
-    ```bash
-    az vm deallocate -n <virtual-machine-name> -g <resource-group-name>
-    ```
-
-* Attach the new NIC to the existing VM
-
-    ```bash
-    az vm nic add --vm-name <virtual-machine-name> \
-        -g <resource-group-name> \
-        --nics <new-NIC-name>
-    ```
-
-* Restart the VM
-
-    ```bash
-    az vm start -n <virtual-machine-name> -g <resource-group-name>
-    ```
-
-* Note the updated details private IP addresses associated with the VM
-
-    ```bash
-    az vm nic list -g <resource-group-name> --vm-name <virtual-machine-name>
-
-    az vm nic show -g <resource-group-name> --vm-name <virtual-machine-name> --nic <existing-NIC-name>
-
-    az vm nic show -g <resource-group-name> --vm-name <virtual-machine-name> --nic <new-NIC-name>
+        --attach-os-disk <new-os-disk-name> \
+        --os-type linux \
     ```
 
 -----
-
-## #6: (@todo) Procure additional public IP for existing VM
-
-* Create an Ubuntu VM using steps from lab #1 above.
-
-* Note the details associated with the VM's existing NIC (virtual network, subnets and private IP addresses).
-
-    ```bash
-    az vm nic list -g <resource-group-name> --vm-name <virtual-machine-name>
-
-    az vm nic show -g <resource-group-name> --vm-name <virtual-machine-name> --nic <existing-NIC-name>
-    ```
