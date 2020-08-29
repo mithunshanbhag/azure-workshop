@@ -19,11 +19,11 @@ namespace AzureFundamentalsWorkshop.CodeSamples.BlobStorage
 
         private async Task DeleteContainersAsync()
         {
+            Console.WriteLine($"Deleting containers in storage account '{this.serviceClient.AccountName}'");
             foreach (var container in this.serviceClient.GetBlobContainers())
             {
-                Console.WriteLine($"Deleting container: {container.Name}");
                 await this.serviceClient.DeleteBlobContainerAsync(container.Name);
-                Console.WriteLine("OK");
+                Console.WriteLine($"\t{container.Name}");
             }
         }
 
@@ -43,22 +43,22 @@ namespace AzureFundamentalsWorkshop.CodeSamples.BlobStorage
             return containers;
         }
 
-        private void EnumerateContainers()
+        private async Task EnumerateContainers()
         {
             Console.WriteLine($"Enumerating containers in storage account '{this.serviceClient.AccountName}'");
-            foreach (var container in this.serviceClient.GetBlobContainers())
+            await foreach (var container in this.serviceClient.GetBlobContainersAsync())
             {
                 Console.WriteLine($"\t{container.Name}");
             }
         }
 
-        private void EnumerateContainersAnonymously()
+        private async Task EnumerateContainersAnonymously()
         {
             var anonServiceClient = new BlobServiceClient(this.serviceClient.Uri);
             Console.WriteLine($"Anonymously enumerating containers in storage account '{this.serviceClient.AccountName}'");
             try
             {
-                foreach (var container in anonServiceClient.GetBlobContainers())
+                await foreach (var container in anonServiceClient.GetBlobContainersAsync())
                 {
                     Console.WriteLine($"\t{container.Name}");
                 }
@@ -79,22 +79,22 @@ namespace AzureFundamentalsWorkshop.CodeSamples.BlobStorage
             }
         }
 
-        private void EnumerateBlobs(BlobContainerClient container)
+        private async Task EnumerateBlobs(BlobContainerClient container)
         {
             Console.WriteLine($"Enumerating blobs in container '{container.Name}'");
-            foreach (var blob in container.GetBlobs())
+            await foreach (var blob in container.GetBlobsAsync())
             {
                 Console.WriteLine($"\t{blob.Name}");
             }
         }
 
-        private void EnumerateBlobsAnonymously(BlobContainerClient container)
+        private async Task EnumerateBlobsAnonymously(BlobContainerClient container)
         {
             var anonContainerClient = new BlobContainerClient(container.Uri);
             Console.WriteLine($"Anonymously enumerating blobs in container '{container.Name}'");
             try
             {
-                foreach (var blob in anonContainerClient.GetBlobs())
+                await foreach (var blob in anonContainerClient.GetBlobsAsync())
                 {
                     Console.WriteLine($"\t{blob.Name}");
                 }
@@ -115,12 +115,12 @@ namespace AzureFundamentalsWorkshop.CodeSamples.BlobStorage
                 {
                     await demo.UploadBlobsAsync(container);
 
-                    demo.EnumerateBlobs(container);
-                    demo.EnumerateBlobsAnonymously(container);
+                    await demo.EnumerateBlobs(container);
+                    await demo.EnumerateBlobsAnonymously(container);
                 }
 
-                demo.EnumerateContainers();
-                demo.EnumerateContainersAnonymously();
+                await demo.EnumerateContainers();
+                await demo.EnumerateContainersAnonymously();
             }
             finally
             {
