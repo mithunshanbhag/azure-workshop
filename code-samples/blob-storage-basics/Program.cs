@@ -45,39 +45,63 @@ namespace AzureFundamentalsWorkshop.CodeSamples.BlobStorage
 
         private void EnumerateContainers()
         {
+            Console.WriteLine($"Enumerating containers in storage account '{this.serviceClient.AccountName}'");
             foreach (var container in this.serviceClient.GetBlobContainers())
             {
-                Console.WriteLine($"Enumerating container '{container.Name}' in storage account '${this.serviceClient.AccountName}'");
-                Console.WriteLine("OK");
+                Console.WriteLine($"\t{container.Name}");
             }
         }
 
         private void EnumerateContainersAnonymously()
         {
             var anonServiceClient = new BlobServiceClient(this.serviceClient.Uri);
-            foreach(var container in anonServiceClient.GetBlobContainers())
+            Console.WriteLine($"Anonymously enumerating containers in storage account '{this.serviceClient.AccountName}'");
+            try
             {
-                Console.WriteLine($"Anonymously enumerating container '{container.Name}' in storage account '${this.serviceClient.AccountName}'");
-                Console.WriteLine("OK");
+                foreach (var container in anonServiceClient.GetBlobContainers())
+                {
+                    Console.WriteLine($"\t{container.Name}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"\tFailed with {ex.GetType().ToString()}");
             }
         }
 
         private async Task UploadBlobsAsync(BlobContainerClient container)
         {
+            Console.WriteLine($"Uploading files to container '{container.Name}'");
             foreach (var fileName in new List<string> { "sample.csv", "sample.json", "sample.txt" })
             {
-                Console.WriteLine($"Uploading file '{fileName}' to container '${container.Name}'");
                 await container.UploadBlobAsync(fileName, File.OpenRead($"./{fileName}"));
-                Console.WriteLine("OK");
+                Console.WriteLine($"\t{fileName}");
             }
         }
 
         private void EnumerateBlobs(BlobContainerClient container)
         {
+            Console.WriteLine($"Enumerating blobs in container '{container.Name}'");
             foreach (var blob in container.GetBlobs())
             {
-                Console.WriteLine($"Enumerating blob '{blob.Name}' in container '${container.Name}'");
-                Console.WriteLine("OK");
+                Console.WriteLine($"\t{blob.Name}");
+            }
+        }
+
+        private void EnumerateBlobsAnonymously(BlobContainerClient container)
+        {
+            var anonContainerClient = new BlobContainerClient(container.Uri);
+            Console.WriteLine($"Anonymously enumerating blobs in container '{container.Name}'");
+            try
+            {
+                foreach (var blob in anonContainerClient.GetBlobs())
+                {
+                    Console.WriteLine($"\t{blob.Name}");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"\tFailed with {ex.GetType().ToString()}");
             }
         }
 
@@ -85,16 +109,23 @@ namespace AzureFundamentalsWorkshop.CodeSamples.BlobStorage
         {
             var demo = new BlobStorageBasics();
 
-            foreach (var container in await demo.CreateContainersAsync())
+            try
             {
-                await demo.UploadBlobsAsync(container);
-                demo.EnumerateBlobs(container);
+                foreach (var container in await demo.CreateContainersAsync())
+                {
+                    await demo.UploadBlobsAsync(container);
+
+                    demo.EnumerateBlobs(container);
+                    demo.EnumerateBlobsAnonymously(container);
+                }
+
+                demo.EnumerateContainers();
+                demo.EnumerateContainersAnonymously();
             }
-
-            demo.EnumerateContainers();
-            demo.EnumerateContainersAnonymously();
-
-            await demo.DeleteContainersAsync();
+            finally
+            {
+                await demo.DeleteContainersAsync();
+            }
         }
     }
 }
