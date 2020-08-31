@@ -1,6 +1,6 @@
 # Azure Resource Documentation
 
-## Basics
+## Azure Basics
 
 * [Azure Glossary](https://docs.microsoft.com/en-us/azure/azure-glossary-cloud-terminology)
 
@@ -12,9 +12,15 @@
 
 -----
 
-## Azure Storage (Blob Storage)
+## Azure Compute (App Service)
 
-* [Azure Blob Storage Documentation](https://docs.microsoft.com/en-us/azure/storage/blobs/)
+* @todo
+
+-----
+
+## Azure Compute (Function Apps)
+
+* @todo
 
 -----
 
@@ -22,5 +28,47 @@
 
 * [Azure Networking Documentation](https://docs.microsoft.com/en-us/azure/networking/networking-overview)
 * [Azure VNET Documentation](https://docs.microsoft.com/en-us/azure/virtual-network/)
+
+-----
+
+## Azure Database (SQL Azure)
+
+* @todo
+
+-----
+
+## Azure Database (Cosmos DB)
+
+* @todo
+
+-----
+
+## Azure Storage (Blob Storage)
+
+* [Azure Blob Storage Documentation](https://docs.microsoft.com/en-us/azure/storage/blobs/)
+
+-----
+
+## Azure Identity
+
+* @todo
+
+-----
+
+## Azure Messaging
+
+* @todo
+
+-----
+
+## Azure DevOps
+
+* @todo
+
+-----
+
+## Azure Monitoring
+
+* @todo
 
 -----
