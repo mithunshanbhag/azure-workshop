@@ -2,7 +2,13 @@
 
 * Install JPTerm ([instructions](https://github.com/jmespath/jmespath.terminal))
 * Install Azure CLI ([instructions](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest))
-  * Log into Azure CLI (`az login`) with your Azure credentials.
+  * Log into Azure CLI with your Azure credentials: `az login`
+  * Create a resource group: `az group create -g azfunwkrg -l eastus2`
+  * Set the resource group's name & location as the default: `az configure --default group=azfunwkrg location=eastus2 web=mithunshanbhag`
+  * Set the following environment variables:
+    * `export myRG=azfunwkrg`
+    * `export myWebApp=mithunshanbhag`
+  * Ensure all necessary env vars are set by running: `env | grep -i "my"`
 * Install .NET Core 3.1 SDK ([instructions](https://dotnet.microsoft.com/download/dotnet-core/3.1))
 * Install VSCode ([download](https://code.visualstudio.com/))
 * Install the following VSCode Extensions:
