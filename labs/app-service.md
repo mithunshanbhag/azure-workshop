@@ -58,8 +58,56 @@
 
 -----
 
-## #3: Fetch configuration values from Azure Key Vault
+## #3: Fetch configuration values from Azure Key Vault (@todo)
 
+* Navigate back to the source folder for the app created in lab #2 above.
 
+    ```bash
+    cd ..
+    ```
+
+* Add reference to the following nuget package:
+
+    ```bash
+    dotnet add package Microsoft.Extensions.Configuration.AzureKeyVault
+    ```
+
+* Ensure that the `CreateHostBuilder` method in the app's Program.cs file is modified as follow to fetch key vault values on startup:
+
+    ```csharp
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureAppConfiguration((context, config) =>
+            {
+                var azureServiceTokenProvider = new AzureServiceTokenProvider();
+
+                var keyVaultClient = new KeyVaultClient(
+                    new KeyVaultClient.AuthenticationCallback(
+                        azureServiceTokenProvider.KeyVaultTokenCallback));
+
+                var builtConfig = config.Build();
+
+                config.AddAzureKeyVault(
+                    builtConfig["KeyVaultEndpoint"],
+                    keyVaultClient,
+                    new DefaultKeyVaultSecretManager());
+            })
+            .ConfigureWebHostDefaults(webBuilder =>
+            {
+                webBuilder.UseStartup<Startup>();
+            });
+    ```
+
+* Modify all appsetting.json files to ensure that they contain the following key-value pairs (note: replace with correct key vault name later).
+
+    ```json
+    "KeyVaultEndpoint": "https://<keyvault-name>.vault.azure.net/"
+    ```
+
+* Assign a managed identity to the previously created app service
+
+    ```bash
+    az webapp identity assign
+    ```
 
 -----
