@@ -1,15 +1,5 @@
 # Labs: Virtual Machines
 
-## Notes
-
-* After each lab, please ensure that you delete the created resources (so as to not accrue costs).
-
-## Resources
-
-* Azure VM Documentation: [Windows](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/) | [Linux](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/)
-
------
-
 ## #1: Create an Ubuntu VM and SSH into it
 
 * Type the following command in Azure CLI to create the Ubuntu VM.

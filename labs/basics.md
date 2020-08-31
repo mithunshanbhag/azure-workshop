@@ -1,11 +1,5 @@
 # Labs: Azure Basics
 
-## Resources
-
-* [Azure Glossary](https://docs.microsoft.com/en-us/azure/azure-glossary-cloud-terminology)
-
------
-
 ## #1: List your azure subscriptions
 
     ```bash

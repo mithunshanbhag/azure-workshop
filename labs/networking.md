@@ -1,13 +1,6 @@
 
 # Labs: Virtual Machines
 
-## Resources
-
-* [Azure Networking Documentation](https://docs.microsoft.com/en-us/azure/networking/networking-overview)
-* [Azure VNET Documentation](https://docs.microsoft.com/en-us/azure/virtual-network/)
-
------
-
 ## #1: Procure additional private IP for existing VM
 
 * Create an Ubuntu VM using steps from [VM lab #1](./virtual-machines.md#1-create-an-ubuntu-vm-and-ssh-into-it).
