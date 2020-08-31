@@ -3,6 +3,7 @@
 * Install JPTerm ([instructions](https://github.com/jmespath/jmespath.terminal))
 * Install Azure CLI ([instructions](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest))
   * Log into Azure CLI with your Azure credentials: `az login`
+  * Set the default azure subscription to use: `az account set -s <your-subscription-id>`
   * Create a resource group: `az group create -g azfunwkrg -l eastus2`
   * Set the resource group's name & location as the default: `az configure --default group=azfunwkrg location=eastus2 web=mithunshanbhag`
   * Set the following environment variables:
