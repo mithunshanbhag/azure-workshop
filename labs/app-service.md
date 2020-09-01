@@ -58,18 +58,42 @@
 
 -----
 
-## #3: Fetch configuration values from Azure Key Vault (@todo)
+## #3: Create an Azure Key Vault for storing app configuration
 
-* Navigate back to the source folder for the app created in lab #2 above.
+* Create the Key Vault
 
     ```bash
-    cd ..
+    az keyvault create -n <key-vault-name>
+    ```
+
+* Create a secret (key-value pair) within the vault
+
+    ```bash
+    az keyvault secret set --name myCity --value Bangalore --vault-name <key-vault-name>
+    ```
+
+-----
+
+## #4: Fetch configuration values from Azure Key Vault (@todo)
+
+* Create a .Net Core 3.1 Web API as follows:
+
+    ```bash
+    mkdir $myWebApp && cd $myWebApp
+
+    dotnet new webapi
     ```
 
 * Add reference to the following nuget package:
 
     ```bash
     dotnet add package Microsoft.Extensions.Configuration.AzureKeyVault
+    ```
+
+* Modify all appsetting.json files to ensure that they contain the following key-value pairs (note: replace with correct key vault name later).
+
+    ```json
+    "KeyVaultEndpoint": "https://<keyvault-name>.vault.azure.net"
     ```
 
 * Ensure that the `CreateHostBuilder` method in the app's Program.cs file is modified as follow to fetch key vault values on startup:
@@ -98,16 +122,45 @@
             });
     ```
 
-* Modify all appsetting.json files to ensure that they contain the following key-value pairs (note: replace with correct key vault name later).
+* Build and package the app
 
-    ```json
-    "KeyVaultEndpoint": "https://<keyvault-name>.vault.azure.net/"
+    ```bash
+    dotnet build
+
+    # ensure that key vault values are being read correctly when executed locally.
+    dotnet run
+
+    dotnet publish -o ./publish
+
+    cd publish
+
+    zip -r publish.zip .
     ```
 
 * Assign a managed identity to the previously created app service
 
     ```bash
     az webapp identity assign
+    ```
+
+* Ensure that web app's identity has permissions to read key vault secrets
+
+    ```bash
+    az keyvault set-policy -n <key-vault-name> \
+        --object-id <principalId-of-managed-identity> \
+        --secret-permissions get
+    ```
+
+* Deploy the publish package to app service
+
+    ```bash
+    az webapp deployment source config-zip -n $myWebApp --src publish.zip
+    ```
+
+* Browse to the deployed app service
+
+    ```bash
+    az webapp browse
     ```
 
 -----
