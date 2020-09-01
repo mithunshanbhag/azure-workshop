@@ -7,7 +7,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace app_service_aspnetcore
+namespace AzureFundamentalsWorkshop.CodeSamples.AppService
 {
     public class Program
     {

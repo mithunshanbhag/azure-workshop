@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>app_services_keyvault</RootNamespace>
+    <RootNamespace>AzureFundamentalsWorkshop.CodeSamples.AppService</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>

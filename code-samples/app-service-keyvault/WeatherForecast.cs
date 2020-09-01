@@ -1,6 +1,6 @@
 using System;
 
-namespace app_services_keyvault
+namespace AzureFundamentalsWorkshop.CodeSamples.AppService
 {
     public class WeatherForecast
     {

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace app_services_keyvault.Controllers
+namespace AzureFundamentalsWorkshop.CodeSamples.AppService
 {
     [ApiController]
     [Route("[controller]")]

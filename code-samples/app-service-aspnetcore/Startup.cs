@@ -9,7 +9,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace app_service_aspnetcore
+namespace AzureFundamentalsWorkshop.CodeSamples.AppService
 {
     public class Startup
     {

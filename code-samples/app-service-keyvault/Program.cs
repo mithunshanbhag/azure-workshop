@@ -10,7 +10,7 @@ using Microsoft.Extensions.Configuration.AzureKeyVault;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-namespace app_services_keyvault
+namespace AzureFundamentalsWorkshop.CodeSamples.AppService
 {
     public class Program
     {
