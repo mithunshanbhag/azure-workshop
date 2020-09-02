@@ -31,7 +31,6 @@ namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApps
 
     public static class HttpTriggerFunctionAdv
     {
-        // [Disable]
         [FunctionName("HttpTriggerFunctionAdv")]
         public static ActionResult Run(
             [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] WeatherRequest request,

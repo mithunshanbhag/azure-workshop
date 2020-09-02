@@ -4,12 +4,11 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
 
-namespace function_app_mixed
+namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApps
 {
-    public static class BlobTriggeredFunction
+    public static class BlobTriggerFunction
     {
-        // [Disable]
-        [FunctionName("BlobTriggeredFunction")]
+        [FunctionName("BlobTriggerFunction")]
         public static void Run(
             [BlobTrigger("mycontainer/{name}")] Stream myBlob,
             string name,
