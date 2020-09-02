@@ -8,9 +8,10 @@ namespace function_app_mixed
 {
     public static class BlobTriggeredFunction
     {
+        // [Disable]
         [FunctionName("BlobTriggeredFunction")]
         public static void Run(
-            [BlobTrigger("samples-workitems/{name}", Connection = "")] Stream myBlob,
+            [BlobTrigger("mycontainer/{name}")] Stream myBlob,
             string name,
             ILogger log)
         {
