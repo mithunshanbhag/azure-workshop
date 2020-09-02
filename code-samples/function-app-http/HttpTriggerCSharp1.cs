@@ -8,11 +8,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace Company.Function
+namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApps
 {
-    public static class HttpTriggerCSharp1
+    public static class HttpTriggerFunction
     {
-        [FunctionName("HttpTriggerCSharp1")]
+        [FunctionName("HttpTriggerFunction")]
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
             ILogger log)

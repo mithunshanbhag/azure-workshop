@@ -3,11 +3,11 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
 
-namespace Company.Function
+namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApps
 {
-    public static class TimerTriggerCSharp1
+    public static class TimerTriggerFunction
     {
-        [FunctionName("TimerTriggerCSharp1")]
+        [FunctionName("TimerTriggerFunction")]
         public static void Run([TimerTrigger("15,45 */2 * * * *")]TimerInfo myTimer, ILogger log)
         {
             log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
