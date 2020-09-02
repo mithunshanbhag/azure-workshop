@@ -1,15 +1,17 @@
 # Labs: Blob Storage
 
-## Prerequisites
+## #1:
 
-* Log into Azure CLI with your Azure credentials.
+-----
 
-## Notes
+## #2:
 
-* After each lab, please ensure that you delete the created resources (so as to not accrue costs).
+-----
 
-## Resources
+## #3:
 
-* [Azure Blob Storage Documentation](https://docs.microsoft.com/en-us/azure/storage/blobs/)
+-----
+
+## #4:
 
 -----
