@@ -12,6 +12,7 @@ namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApps
 {
     public static class HttpTriggerFunction
     {
+        // [Disable]
         [FunctionName("HttpTriggerFunction")]
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,

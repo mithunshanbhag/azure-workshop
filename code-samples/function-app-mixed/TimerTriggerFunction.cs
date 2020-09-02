@@ -7,6 +7,7 @@ namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApps
 {
     public static class TimerTriggerFunction
     {
+        // [Disable]
         [FunctionName("TimerTriggerFunction")]
         public static void Run([TimerTrigger("15,45 */2 * * * *")]TimerInfo myTimer, ILogger log)
         {
