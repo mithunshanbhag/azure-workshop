@@ -12,7 +12,7 @@
       "type": "process",
       "problemMatcher": "$msCompile",
       "options": {
-        "cwd": "${workspaceFolder}/code-samples/function-app-timer"
+        "cwd": "${workspaceFolder}/code-samples/function-app-http"
       }
     },
     {
@@ -31,7 +31,7 @@
       },
       "problemMatcher": "$msCompile",
       "options": {
-        "cwd": "${workspaceFolder}/code-samples/function-app-timer"
+        "cwd": "${workspaceFolder}/code-samples/function-app-http"
       }
     },
     {
@@ -47,7 +47,7 @@
       "type": "process",
       "problemMatcher": "$msCompile",
       "options": {
-        "cwd": "${workspaceFolder}/code-samples/function-app-timer"
+        "cwd": "${workspaceFolder}/code-samples/function-app-http"
       }
     },
     {
@@ -64,14 +64,14 @@
       "dependsOn": "clean release",
       "problemMatcher": "$msCompile",
       "options": {
-        "cwd": "${workspaceFolder}/code-samples/function-app-timer"
+        "cwd": "${workspaceFolder}/code-samples/function-app-http"
       }
     },
     {
       "type": "func",
       "dependsOn": "build",
       "options": {
-        "cwd": "${workspaceFolder}/code-samples/function-app-timer/bin/Debug/netcoreapp3.1"
+        "cwd": "${workspaceFolder}/code-samples/function-app-http/bin/Debug/netcoreapp3.1"
       },
       "command": "host start",
       "isBackground": true,
