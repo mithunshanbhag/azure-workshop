@@ -3,7 +3,8 @@
 ## Notes
 
 * This page can be accessed from [http://bit.ly/azfunwk](http://bit.ly/azfunwk)
-* [Lab prerequisites](./lab-prerequisites.md) | [Resource Documentation](./resource-documentation.md)
+* [Labs](./labs) | [Lab Prerequisites](./lab-prerequisites.md) | [Code Samples](./code-samples)
+* [Resource Documentation](./resource-documentation.md)
 
 ## Content
 
