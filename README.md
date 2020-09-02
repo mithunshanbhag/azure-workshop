@@ -3,14 +3,13 @@
 ## Notes
 
 * This page can be accessed from [http://bit.ly/azfunwk](http://bit.ly/azfunwk)
-* [Labs](./labs) | [Lab Prerequisites](./lab-prerequisites.md) | [Code Samples](./code-samples)
+* [Labs](./labs) ([Prerequisites](./lab-prerequisites.md) | [Solutions](./code-samples))
 * [Resource Documentation](./resource-documentation.md)
 
 ## Content
 
 Topics | Labs | Resource Docs
 -------|------|--------------
-[Azure Basics](https://github.com/mithunshanbhag/azure-fundamentals-workshop/projects/4#column-10422094) | [Link](./labs/basics.md) | [Link](./resource-documentation.md#azure-basics)
 [Azure Compute (Virtual Machines)](https://github.com/mithunshanbhag/azure-fundamentals-workshop/projects/4#column-10422095) | [Link](./labs/virtual-machines.md) | [Link](./resource-documentation.md#azure-compute-virtual-machines)
 [Azure Compute (App Service)](https://github.com/mithunshanbhag/azure-fundamentals-workshop/projects/4#column-10422096) | [Link](./labs/app-service.md) | [Link](./resource-documentation.md#azure-compute-app-service)
 [Azure Compute (Function Apps)](https://github.com/mithunshanbhag/azure-fundamentals-workshop/projects/4#column-10652132) | [Link](./labs/function-apps.md) | [Link](./resource-documentation.md#azure-compute-function-apps)

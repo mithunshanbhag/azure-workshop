@@ -68,3 +68,9 @@ Create & deploy a function app that processes a `POST` request as follows:
 [[SOLUTION]](../code-samples/function-app-mixed/HttpTriggerFunctionAdv.cs)
 
 -----
+
+## #3: Data/Event triggered function app
+
+@todo
+
+-----
