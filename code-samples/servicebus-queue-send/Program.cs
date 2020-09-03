@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.ServiceBus;
 
@@ -34,14 +35,36 @@ namespace AzureFundamentalsWorkshop.CodeSamples.ServiceBus
                 var message = new Message(messageBytes);
 
                 await this.queueClient.SendAsync(message);
-                Console.WriteLine($"Message Posted: {messageText}");
+                Console.WriteLine($"Sent message: {messageText}");
             }
+        }
+
+        public void ReceiveMessages()
+        {
+            var msgHandlerOptions = new MessageHandlerOptions((args) => Task.CompletedTask);
+
+            // Register the function that will process messages
+            this.queueClient.RegisterMessageHandler(ProcessMessagesAsync, msgHandlerOptions);
+        }
+
+        private async Task ProcessMessagesAsync(Message message, CancellationToken token)
+        {
+            var messageBytes = message.Body;
+            var messageText = Encoding.UTF8.GetString(message.Body);
+            Console.WriteLine($"Received message: {messageText}");
+
+            // mark the message as 'processed'
+            await this.queueClient.CompleteAsync(message.SystemProperties.LockToken);
         }
 
         static async Task Main(string[] args)
         {
             Program p = new Program();
-            await p.SendMessagesAsync();
+            await p.SendMessagesAsync(); // uncomment this to send messages
+            // p.ReceiveMessages(); // uncomment this to receive messages
+
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadKey();
         }
     }
 }
