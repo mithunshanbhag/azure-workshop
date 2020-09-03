@@ -9,7 +9,7 @@ namespace AzureFundamentalsWorkshop.CodeSamples.BlobStorage
 {
     public class BlobStorageBasics
     {
-        private readonly string connectionString = "DefaultEndpointsProtocol=https;AccountName=satempdeleteme;AccountKey=E1IStWNaJ53FDfK9+2MXWaUX6qYZceaASEjzlX/KwK0OT+QwEvI/ktrXVuckMrc+73nZP561nKH546Qkz0zQ0A==;EndpointSuffix=core.windows.net";
+        private readonly string connectionString = "<@todo-replace-with-connection-string>";
         private readonly BlobServiceClient serviceClient;
 
         BlobStorageBasics()
