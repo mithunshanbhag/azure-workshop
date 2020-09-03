@@ -14,3 +14,5 @@
 * Create a container named `mycontainer` in the storage account associated with the function app. This is required for the blob storage trigger/input-binding demos to work.
 
 * In the `host.json` explicitly mention the name of the functions that need to be executed.
+
+* Ensure that the `AzureWebJobsServiceBus` settings has the connection string of the service bus namespace. Ok to do it only in the `local.settings.json` file while debugging locally.
