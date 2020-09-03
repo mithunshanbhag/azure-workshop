@@ -18,7 +18,7 @@ namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApps
             log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
 
             var outputContainerName = "mycontainer";
-            var outputBlobName = DateTime.UtcNow.ToString("yyyy-MM-dd");
+            var outputBlobName = DateTime.UtcNow.ToString("yyyy-MM-dd-HH-mm-ss");
             var outputBlobAttr = new BlobAttribute($"{outputContainerName}/{outputBlobName}", FileAccess.Write);
             using (var outputFile = await binder.BindAsync<TextWriter>(outputBlobAttr))
             {
