@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "app-services-keyvault", "ap
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "function-app-mixed", "function-app-mixed\function-app-mixed.csproj", "{EEBB6898-572C-4C00-8659-F42CC3E4F45C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "servicebus-queue-send", "servicebus-queue-send\servicebus-queue-send.csproj", "{4F5C436E-A6C3-486B-A569-4AB4E8D91089}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "servicebus-queue", "servicebus-queue\servicebus-queue.csproj", "{4F5C436E-A6C3-486B-A569-4AB4E8D91089}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

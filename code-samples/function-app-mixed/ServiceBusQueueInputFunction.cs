@@ -9,7 +9,7 @@ namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApp
     {
         [FunctionName("ServiceBusQueueTriggerFunction")]
         public static void Run(
-            [ServiceBusTrigger("myqueue")] string myQueueItem,
+            [ServiceBusTrigger("@replace-servicebus-queue-name")] string myQueueItem,
             DateTime EnqueuedTimeUtc, // message metadata
             int DeliveryCount, // message metadata
             string MessageId, // message metadata

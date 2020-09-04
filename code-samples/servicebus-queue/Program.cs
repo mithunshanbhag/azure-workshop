@@ -8,9 +8,9 @@ namespace AzureFundamentalsWorkshop.CodeSamples.ServiceBus
 {
     class Program : IDisposable
     {
-        private readonly int numMessages = 5;
-        private readonly string connectionString = "@todo-replace-with-connection-string";
-        private readonly string queueName = "@todo-replace-with-queue-name";
+        private readonly int numMessages = 5; // arbitrary value
+        private readonly string connectionString = "@replace-with-service-bus-connection-string";
+        private readonly string queueName = "@replace-with-queue-name";
         private readonly IQueueClient queueClient;
 
         Program()
