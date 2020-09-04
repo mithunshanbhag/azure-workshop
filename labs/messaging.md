@@ -28,16 +28,32 @@
 
 ## #2: Posting messages to service bus queue
 
+Create a console app which posts messages (text) to a service bus queue.
+
+[[SOLUTION]](../code-samples/servicebus-queue/program.cs)
+
 -----
 
 ## #3: Receiving messages from service bus queue
 
+Modify above console app to all receive/dequeue messages from above service bus queue.
+
+[[SOLUTION]](../code-samples/servicebus-queue/program.cs)
+
 -----
 
-## #4: Publishing to service bus topic
+## #4: ServiceBus queue-triggered function
+
+Create and deploy a function which uses a service bus queue trigger for receiving/processing messages.
+
+[[SOLUTION]](../code-samples/function-app-mixed/ServiceBusQueueInputFunction.cs)
 
 -----
 
-## #5: Subscribing to service bus topics
+## #5: [Homework] Publishing to service bus topic
+
+-----
+
+## #6: [Homework] Subscribing to service bus topics
 
 -----

@@ -9,7 +9,7 @@ namespace AzureFundamentalsWorkshop.CodeSamples.BlobStorage
 {
     public class BlobStorageBasics
     {
-        private readonly string connectionString = "<@todo-replace-with-connection-string>";
+        private readonly string connectionString = "<@replace-with-connection-string>";
         private readonly BlobServiceClient serviceClient;
 
         BlobStorageBasics()

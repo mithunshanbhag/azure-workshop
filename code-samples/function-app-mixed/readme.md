@@ -6,7 +6,7 @@
     {
         "IsEncrypted": false,
         "Values": {
-            "AzureWebJobsStorage": "<@todo-replace-with-actual-connection-string-of-storage-account>"
+            "AzureWebJobsStorage": "<@replace-with-actual-connection-string-of-storage-account>"
         }
     }
     ```
