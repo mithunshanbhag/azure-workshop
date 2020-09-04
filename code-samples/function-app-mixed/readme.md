@@ -15,4 +15,4 @@
 
 * In the `host.json` explicitly mention the name of the functions that need to be executed.
 
-* Ensure that the `AzureWebJobsServiceBus` settings has the connection string of the service bus namespace. Ok to do it only in the `local.settings.json` file while debugging locally.
+* Ensure that the `AzureWebJobsServiceBus` application setting has the connection string of the service bus namespace. Ok to do it only in the `local.settings.json` file while debugging locally.
