@@ -92,11 +92,11 @@
 
 ## #3: Load balanced VMs across Availability Zones (intra-regional HA)
 
-* This exercise will be done manually via portal (too many lengthy steps for CLI usage).
+* Note: This exercise will be done manually via portal (too many lengthy steps for CLI usage).
 
-* Note: Ensure that you enable ports 80 (http) and 443 (https) as well as 22 (SSH) and 3389 (RDP).
+* Create a linux VM (please ensure that you've opened ports ports 80/http and 22/ssh).
 
-* Note: Installing nginx via apt-get package manager on Linux:
+* SSH into the machine to install nginx via apt-get package manager:
 
     ```bash
     sudo apt-get -y update
@@ -104,11 +104,17 @@
     sudo apt-get -y install nginx
     ```
 
-* Note: Installing IIS via powershell on Windows:
+* Create a linux VM (please ensure that you've opened ports ports 80/http and 3389/rdp).
+
+* RDP into the machine to install IIS via powershell:
 
     ```bash
     Install-WindowsFeature -name Web-Server -IncludeManagementTools
     ```
+
+* Create and configure an azure load-balancer to use both VMs in a high-availability setting.
+
+-----
 
 ## #4: [HomeWork] Load balanced VMs across Availability Sets (intra-regional HA)
 
