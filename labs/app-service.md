@@ -28,12 +28,12 @@
     az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="1"
     ```
 
-* Create a .Net Core 3.1 app as follows:
+* Create a .Net Core 3.1 Web API as follows:
 
     ```bash
     mkdir $myWebApp && cd $myWebApp
 
-    dotnet new webapp
+    dotnet new webapi
 
     dotnet build
 
@@ -122,6 +122,22 @@
             });
     ```
 
+* Ensure that you add the following `using` statements:
+
+    ```csharp
+    using Microsoft.Azure.KeyVault;
+    using Microsoft.Azure.Services.AppAuthentication;
+    using Microsoft.Extensions.Configuration.AzureKeyVault;
+    ```
+
+* Use dependency injection to inject `IConfiguration` in the controller. Please ensure that you're `using Microsoft.Extensions.Configuration;`
+
+* Ensure that `City` property is fetched from the key vault and returned in the response as follows:
+
+    ```csharp
+    City = _config["myCity"],
+    ```
+
 * Build and package the app
 
     ```bash
@@ -148,7 +164,7 @@
     ```bash
     az keyvault set-policy -n <key-vault-name> \
         --object-id <principalId-of-managed-identity> \
-        --secret-permissions get
+        --secret-permissions get list
     ```
 
 * Deploy the publish package to app service

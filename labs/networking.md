@@ -1,7 +1,23 @@
 
 # Labs: Virtual Machines
 
-## #1: Procure additional private IP for existing VM
+## #1: Open Port 80 for serving HTTP requests
+
+* Create an Ubuntu VM using steps from [VM lab #1](./virtual-machines.md#1-create-an-ubuntu-vm-and-ssh-into-it).
+
+* SSH into the VM and install NGINX server
+
+    ```bash
+    sudo apt-get -y update
+
+    sudo apt-get -y install nginx
+    ```
+
+* @todo
+
+-----
+
+## #2: Procure additional private IP for existing VM
 
 * Create an Ubuntu VM using steps from [VM lab #1](./virtual-machines.md#1-create-an-ubuntu-vm-and-ssh-into-it).
 
@@ -55,6 +71,30 @@
 
 -----
 
-## 3: Load balanced VMs
+## #3: Load balanced VMs across Availability Zones (intra-regional HA)
 
-* @todo
+* This exercise will be done manually via portal (too many lengthy steps for CLI usage).
+
+* Note: Ensure that you enable ports 80 (http) and 443 (https) as well as 22 (SSH) and 3389 (RDP).
+
+* Note: Installing nginx via apt-get package manager on Linux:
+
+    ```bash
+    sudo apt-get -y update
+
+    sudo apt-get -y install nginx
+    ```
+
+* Note: Installing IIS via powershell on Windows:
+
+    ```bash
+    Install-WindowsFeature -name Web-Server -IncludeManagementTools
+    ```
+
+## #4: [HomeWork] Load balanced VMs across Availability Sets (intra-regional HA)
+
+-----
+
+## #5: [HomeWork] Traffic Management across regions (inter-regional HA)
+
+-----
