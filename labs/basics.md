@@ -32,16 +32,24 @@
 
 -----
 
-## Demos (using query filters & JP)
-## #todo: Capture output value in variable
+## #5: Pipe output value to external command
+
+    ```bash
+    az group list -o table | grep -i "azfunwkrg"
+    ```
 
 -----
 
-## #@todo: Pipe output value to external command
+## #6: Capture output value in variable
+
+    ```bash
+    myVar = $(az group list -o table | grep -i "azfunwkrg")
+    echo $myVar
+    ```
 
 -----
 
-## #@todo: Select a property from an object
+## #7: Select a property from an object
 
     ```bash
     az account show --query "name"
@@ -49,7 +57,7 @@
 
 -----
 
-## #@todo: Select a nested property from an object
+## #8: Select a nested property from an object
 
     ```bash
     az account show --query "user.name"
@@ -57,7 +65,7 @@
 
 -----
 
-## #@todo: Select an object from an array
+## #9: Select an object from an array
 
     ```bash
     az resource list --query "[0]"
@@ -65,7 +73,7 @@
 
 -----
 
-## #@todo: Select multiple objects from an array (splicing)
+## #10: Select multiple objects from an array (splicing)
 
     ```bash
     az resource list --query "[0:3]"
@@ -73,7 +81,7 @@
 
 -----
 
-## #@todo: Select multiple objects from an array that match a condition (filtering)
+## #11: Select multiple objects from an array that match a condition (filtering)
 
     ```bash
     # Note: filter conditions are case-sensitive
@@ -82,7 +90,15 @@
 
 -----
 
-## #@todo: Select multiple properties (multi-select list)
+## #14: Select multiple objects from an array that match a condition (substring)
+
+    ```bash
+    az group list --query "[?contains(name, 'test')]"
+    ```
+
+-----
+
+## #12: Select multiple properties (multi-select list)
 
     ```bash
     az resource list --query "[].[id, name]"
@@ -90,7 +106,7 @@
 
 -----
 
-## #@todo: Select multiple properties (multi-select hash)
+## #13: Select multiple properties (multi-select hash)
 
     ```bash
     az resource list --query "[].{resourceId:id, resourceName:name}"

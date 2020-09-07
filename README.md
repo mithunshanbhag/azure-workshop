@@ -2,7 +2,7 @@
 
 ## [Start Here](https://github.com/mithunshanbhag/azure-fundamentals-workshop/projects/4)
 
-* [Contents](https://github.com/mithunshanbhag/azure-fundamentals-workshop/projects/4) | [Labs](./labs) ([prerequisites](./lab-prerequisites.md) | [solutions](./code-samples) | [resource documentation](./resource-documentation.md))
+* [Contents](https://github.com/mithunshanbhag/azure-fundamentals-workshop/projects/4) | [Labs](./labs) ([prerequisites](./lab-prerequisites.md) | [solutions](./code-samples))
 
 ## Notes
 
