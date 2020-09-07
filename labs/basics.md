@@ -90,14 +90,6 @@
 
 -----
 
-## #14: Select multiple objects from an array that match a condition (substring)
-
-    ```bash
-    az group list --query "[?contains(name, 'test')]"
-    ```
-
------
-
 ## #12: Select multiple properties (multi-select list)
 
     ```bash
@@ -110,6 +102,14 @@
 
     ```bash
     az resource list --query "[].{resourceId:id, resourceName:name}"
+    ```
+
+-----
+
+## #14: Select multiple objects from an array that match a condition (substring)
+
+    ```bash
+    az group list --query "[?contains(name, 'test')]"
     ```
 
 -----
