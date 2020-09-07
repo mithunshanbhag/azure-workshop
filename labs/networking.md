@@ -11,9 +11,28 @@
     sudo apt-get -y update
 
     sudo apt-get -y install nginx
+
+    exit
     ```
 
-* @todo
+* See rules currently associated with VM's NIC's NSG.
+
+    ```bash
+    az network nsg list -o table
+
+    az network nsg rule list --nsg-name <name-of-NSG>
+    ```
+
+* Add a rule to enable incoming traffic on port 80/http
+
+    ```bash
+    az network nsg rule create -n allow-https \
+        --nsg-name <name-of-NSG> \
+        --destination-port-ranges 443 \
+        --priority 300
+    ```
+
+* Verify that the NGINX server is up and running by accessing `http://<public-ip-of-virtual-machine>`
 
 -----
 
@@ -73,11 +92,11 @@
 
 ## #3: Load balanced VMs across Availability Zones (intra-regional HA)
 
-* This exercise will be done manually via portal (too many lengthy steps for CLI usage).
+* Note: This exercise will be done manually via portal (too many lengthy steps for CLI usage).
 
-* Note: Ensure that you enable ports 80 (http) and 443 (https) as well as 22 (SSH) and 3389 (RDP).
+* Create a linux VM (please ensure that you've opened ports ports 80/http and 22/ssh). Ensure that this VM is in zone1 of a region's availability zone. 
 
-* Note: Installing nginx via apt-get package manager on Linux:
+* SSH into the machine to install nginx via apt-get package manager:
 
     ```bash
     sudo apt-get -y update
@@ -85,11 +104,17 @@
     sudo apt-get -y install nginx
     ```
 
-* Note: Installing IIS via powershell on Windows:
+* Create a linux VM (please ensure that you've opened ports ports 80/http and 3389/rdp). Ensure that this VM is in zone2 of a region's availability zone.
+
+* RDP into the machine to install IIS via powershell:
 
     ```bash
     Install-WindowsFeature -name Web-Server -IncludeManagementTools
     ```
+
+* Create and configure an azure load-balancer to use both VMs in a high-availability setting.
+
+-----
 
 ## #4: [HomeWork] Load balanced VMs across Availability Sets (intra-regional HA)
 
