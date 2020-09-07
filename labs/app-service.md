@@ -28,12 +28,12 @@
     az webapp config appsettings set --settings WEBSITE_RUN_FROM_PACKAGE="1"
     ```
 
-* Create a .Net Core 3.1 app as follows:
+* Create a .Net Core 3.1 Web API as follows:
 
     ```bash
     mkdir $myWebApp && cd $myWebApp
 
-    dotnet new webapp
+    dotnet new webapi
 
     dotnet build
 
