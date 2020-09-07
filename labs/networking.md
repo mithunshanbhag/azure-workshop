@@ -94,7 +94,7 @@
 
 * Note: This exercise will be done manually via portal (too many lengthy steps for CLI usage).
 
-* Create a linux VM (please ensure that you've opened ports ports 80/http and 22/ssh).
+* Create a linux VM (please ensure that you've opened ports ports 80/http and 22/ssh). Ensure that this VM is in zone1 of a region's availability zone. 
 
 * SSH into the machine to install nginx via apt-get package manager:
 
@@ -104,7 +104,7 @@
     sudo apt-get -y install nginx
     ```
 
-* Create a linux VM (please ensure that you've opened ports ports 80/http and 3389/rdp).
+* Create a linux VM (please ensure that you've opened ports ports 80/http and 3389/rdp). Ensure that this VM is in zone2 of a region's availability zone.
 
 * RDP into the machine to install IIS via powershell:
 
