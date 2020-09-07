@@ -11,9 +11,28 @@
     sudo apt-get -y update
 
     sudo apt-get -y install nginx
+
+    exit
     ```
 
-* @todo
+* See rules currently associated with VM's NIC's NSG.
+
+    ```bash
+    az network nsg list -o table
+
+    az network nsg rule list --nsg-name <name-of-NSG>
+    ```
+
+* Add a rule to enable incoming traffic on port 80/http
+
+    ```bash
+    az network nsg rule create -n allow-https \
+        --nsg-name <name-of-NSG> \
+        --destination-port-ranges 443 \
+        --priority 300
+    ```
+
+* Verify that the NGINX server is up and running by accessing `http://<public-ip-of-virtual-machine>`
 
 -----
 
