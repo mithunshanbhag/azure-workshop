@@ -41,9 +41,9 @@
 
 -----
 
-## #3: Create a SAS token (using .NET Core SDK)
+## #3: Using a SAS token (using .NET Core SDK)
 
-@todo
+[[SOLUTION]](../code-samples/blob-storage-sas)
 
 -----
 
