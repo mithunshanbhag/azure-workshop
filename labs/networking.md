@@ -94,7 +94,7 @@
 
 * Note: This exercise will be done manually via portal (too many lengthy steps for CLI usage).
 
-* Create a linux VM (please ensure that you've opened ports ports 80/http and 22/ssh). Ensure that this VM is in zone1 of a region's availability zone. 
+* Create a linux VM (please ensure that you've opened ports ports 80/http and 22/ssh). Ensure that this VM is in zone1 of a region's availability zone.
 
 * SSH into the machine to install nginx via apt-get package manager:
 
