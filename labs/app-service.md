@@ -74,7 +74,7 @@
 
 -----
 
-## #4: Fetch configuration values from Azure Key Vault (@todo)
+## #4: Fetch configuration values from Azure Key Vault
 
 * Create a .Net Core 3.1 Web API as follows:
 
