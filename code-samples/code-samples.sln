@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "function-app-mixed", "funct
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "servicebus-queue", "servicebus-queue\servicebus-queue.csproj", "{4F5C436E-A6C3-486B-A569-4AB4E8D91089}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "cosmos-db-basics", "cosmos-db-basics\cosmos-db-basics.csproj", "{EDAFCFC5-FD14-4181-BDD0-10706108113A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -86,5 +88,17 @@ Global
 		{4F5C436E-A6C3-486B-A569-4AB4E8D91089}.Release|x64.Build.0 = Release|Any CPU
 		{4F5C436E-A6C3-486B-A569-4AB4E8D91089}.Release|x86.ActiveCfg = Release|Any CPU
 		{4F5C436E-A6C3-486B-A569-4AB4E8D91089}.Release|x86.Build.0 = Release|Any CPU
+		{EDAFCFC5-FD14-4181-BDD0-10706108113A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDAFCFC5-FD14-4181-BDD0-10706108113A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDAFCFC5-FD14-4181-BDD0-10706108113A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{EDAFCFC5-FD14-4181-BDD0-10706108113A}.Debug|x64.Build.0 = Debug|Any CPU
+		{EDAFCFC5-FD14-4181-BDD0-10706108113A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{EDAFCFC5-FD14-4181-BDD0-10706108113A}.Debug|x86.Build.0 = Debug|Any CPU
+		{EDAFCFC5-FD14-4181-BDD0-10706108113A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDAFCFC5-FD14-4181-BDD0-10706108113A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDAFCFC5-FD14-4181-BDD0-10706108113A}.Release|x64.ActiveCfg = Release|Any CPU
+		{EDAFCFC5-FD14-4181-BDD0-10706108113A}.Release|x64.Build.0 = Release|Any CPU
+		{EDAFCFC5-FD14-4181-BDD0-10706108113A}.Release|x86.ActiveCfg = Release|Any CPU
+		{EDAFCFC5-FD14-4181-BDD0-10706108113A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
