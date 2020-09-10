@@ -34,30 +34,22 @@ namespace AzureFundamentalsWorkshop.CodeSamples.CosmosDB
             try
             {
                 await myCosmosService.AddContactAsync(newContact1);
-                Console.WriteLine($"added contact: id={newContact1.Id}, firstname={newContact1.FirstName}");
-
                 await myCosmosService.AddContactAsync(newContact2);
-                Console.WriteLine($"added contact: id={newContact2.Id}, firstname={newContact2.FirstName}");
 
-                foreach(var contact in await myCosmosService.ListContactsAsync())
+                foreach (var contact in await myCosmosService.ListContactsAsync())
                 {
-                    Console.WriteLine($"fetched contact: id={contact.Id}, firstname={contact.FirstName}");
                 }
 
                 var contactToModify = await myCosmosService.GetContactAsync(newContact2.Id);
-                Console.WriteLine($"fetched contact: id={contactToModify.Id}, firstname={contactToModify.FirstName}");
 
-                contactToModify.FirstName = "Jane"; 
+                contactToModify.FirstName = "Jane";
                 await myCosmosService.UpdateContactAsync(contactToModify.Id, contactToModify);
-                Console.WriteLine($"updated contact: id={contactToModify.Id}, firstname={contactToModify.FirstName}");
             }
             finally
             {
                 // await myCosmosService.DeleteContactAsync(newContact1.Id);
                 // await myCosmosService.DeleteContactAsync(newContact1.Id);
             }
-
-
         }
 
     }

@@ -28,16 +28,18 @@ namespace AzureFundamentalsWorkshop.CodeSamples.CosmosDB
             var containerResponse = await this.database.CreateContainerIfNotExistsAsync(this.containerName, "/id");
             this.container = containerResponse.Container;
             Console.WriteLine($"Fetched container: {this.containerName}");
-        } 
+        }
 
         public async Task AddContactAsync(Contact contact)
         {
             await this.container.CreateItemAsync<Contact>(contact, new PartitionKey(contact.Id));
+            Console.WriteLine($"added contact: id={contact.Id}");
         }
 
         public async Task DeleteContactAsync(string id)
         {
             await this.container.DeleteItemAsync<Contact>(id, new PartitionKey(id));
+            Console.WriteLine($"deleted contact: id={id}");
         }
 
         public async Task<Contact> GetContactAsync(string id)
@@ -45,13 +47,14 @@ namespace AzureFundamentalsWorkshop.CodeSamples.CosmosDB
             try
             {
                 ItemResponse<Contact> response = await this.container.ReadItemAsync<Contact>(id, new PartitionKey(id));
+                Console.WriteLine($"fetched contact: id={id}");
+
                 return response.Resource;
             }
             catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
                 return null;
             }
-
         }
 
         public async Task<IEnumerable<Contact>> ListContactsAsync()
@@ -61,7 +64,6 @@ namespace AzureFundamentalsWorkshop.CodeSamples.CosmosDB
             while (query.HasMoreResults)
             {
                 var response = await query.ReadNextAsync();
-
                 results.AddRange(response.ToList());
             }
 
@@ -71,6 +73,7 @@ namespace AzureFundamentalsWorkshop.CodeSamples.CosmosDB
         public async Task UpdateContactAsync(string id, Contact contact)
         {
             await this.container.UpsertItemAsync<Contact>(contact, new PartitionKey(id));
+            Console.WriteLine($"updated contact: id={id}");
         }
     }
 }
