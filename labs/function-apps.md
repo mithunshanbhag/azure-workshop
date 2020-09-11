@@ -92,7 +92,3 @@ Same example as above, but output blob names should be in the format: `yyyy-MM-d
 [[SOLUTION]](../code-samples/function-app-mixed/BlobRuntimeBindingFunction.cs)
 
 -----
-
-## #6: [HomeWork] Utilize CosmosDB triggers (change feed)
-
------
