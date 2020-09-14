@@ -10,11 +10,13 @@ namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApps
     {
         [FunctionName("BlobTriggerFunction")]
         public static void Run(
-            [BlobTrigger("mycontainer/{name}")] Stream myBlob,
-            string name,
+            [BlobTrigger("mycontainer/{blobName}")] string blobContents,
+            string blobName,
             ILogger log)
         {
-            log.LogInformation($"C# Blob trigger function Processed blob\n Name:{name} \n Size: {myBlob.Length} Bytes");
+            log.LogInformation($"Function triggered: BlobTriggerFunction");
+            log.LogInformation($"Blob Name: {blobName}");
+            log.LogInformation($"Blob Contents: {blobContents}");
         }
     }
 }

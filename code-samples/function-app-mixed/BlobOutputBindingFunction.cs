@@ -6,9 +6,9 @@ using Microsoft.Extensions.Logging;
 
 namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApps
 {
-    public static class BlobOutputFunction
+    public static class BlobOutputBindingFunction
     {
-        [FunctionName("BlobOutputFunction")]
+        [FunctionName("BlobOutputBindingFunction")]
         public static void Run(
             [TimerTrigger("0 */1 * * * *")] TimerInfo myTimer,
             [Blob("mycontainer/foo-{DateTime}.txt", FileAccess.Write)] out string contentToWrite,
