@@ -1,5 +1,6 @@
 # Prerequisites for labs
 
+* Please ensure that you have access to an active Azure subscription.
 * Install JPTerm ([instructions](https://github.com/jmespath/jmespath.terminal))
 * Install Azure CLI ([instructions](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest))
   * Log into Azure CLI with your Azure credentials: `az login`
