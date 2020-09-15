@@ -7,8 +7,5 @@
                 "isEnabled": true
             }
         }
-    },
-    "functions": [
-        "@replace-with-name-of-function-to-execute"
-    ]
+    }
 }
