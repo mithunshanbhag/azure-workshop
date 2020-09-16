@@ -46,7 +46,7 @@ Modify above console app to all receive/dequeue messages from above service bus 
 
 Create and deploy a function which uses a service bus queue trigger for receiving/processing messages.
 
-[[SOLUTION]](../code-samples/function-app-servicebus-input/ServiceBusQueueInputFunction.cs)
+[[SOLUTION]](../code-samples/function-app-servicebus-trigger/ServiceBusQueueTriggerFunction.cs)
 
 -----
 
