@@ -10,12 +10,11 @@ namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApp
         [FunctionName("ServiceBusQueueTriggerFunction")]
         public static void Run(
             [ServiceBusTrigger("@replace-servicebus-queue-name")] string myQueueItem,
-            DateTime EnqueuedTimeUtc, // message metadata
-            int DeliveryCount, // message metadata
-            string MessageId, // message metadata
+            int deliveryCount, // message metadata
+            string messageId, // message metadata
             ILogger log)
         {
-            log.LogInformation($"Processing message: {MessageId}, enqueued at {EnqueuedTimeUtc}");
+            log.LogInformation($"Processing message: {messageId}, delivery count: {deliveryCount}");
             log.LogInformation($"Message content: {myQueueItem}");
             log.LogInformation($"Finished processing message");
         }
