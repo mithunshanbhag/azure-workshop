@@ -15,7 +15,7 @@ namespace AzureFundamentalsWorkshop.CodeSamples.ServiceBus
 
         Program()
         {
-            queueClient = new QueueClient(connectionString, queueName);
+            queueClient = new QueueClient(connectionString, queueName); // note: default receive mode is peek-lock
         }
 
         public void Dispose()
@@ -41,6 +41,7 @@ namespace AzureFundamentalsWorkshop.CodeSamples.ServiceBus
 
         public void ReceiveMessages()
         {
+            // Note: By default MessageHandlerOptions's 'autocomplete' is true.
             var msgHandlerOptions = new MessageHandlerOptions((args) => Task.CompletedTask);
 
             // Register the function that will process messages
@@ -51,10 +52,34 @@ namespace AzureFundamentalsWorkshop.CodeSamples.ServiceBus
         {
             var messageBytes = message.Body;
             var messageText = Encoding.UTF8.GetString(message.Body);
-            Console.WriteLine($"Received message: {messageText}");
+            Console.WriteLine($"Received message: {messageText}, delivery count: {message.SystemProperties.DeliveryCount}");
 
-            // mark the message as 'processed'
-            await this.queueClient.CompleteAsync(message.SystemProperties.LockToken);
+            /*
+                Note: Un-commenting below line will cause message to be 'abandoned' immediately.
+                Message delivery will be retried if max delivery count has not been exceeded.
+            */
+            // throw new Exception("thrown deliberately");
+
+            /*
+                Note: un-commenting below line will cause message to be 'abandoned' immediately.
+                Message delivery will be retried if max delivery count has not been exceeded.
+            */
+            // await this.queueClient.AbandonAsync(message.SystemProperties.LockToken);
+
+            /*
+                Note: un-commenting below line will cause message to be 'deadlettered' immediately.
+                Message delivery will NOT be retried (irrespective of whether the message delivery count 
+                has been exceeded or not).
+            */
+            // await this.queueClient.DeadLetterAsync(message.SystemProperties.LockToken);
+
+            /*
+                Note: un-commenting below line will cause message to be marked 'completed' immediately.
+                Technically this is not required since MessageHandlerOptions's 'autoComplete' is set to true by default.
+            */
+            // await this.queueClient.CompleteAsync(message.SystemProperties.LockToken);
+
+            await Task.CompletedTask;
         }
 
         static async Task Main(string[] args)
