@@ -12,7 +12,7 @@
       "type": "process",
       "problemMatcher": "$msCompile",
       "options": {
-        "cwd": "${workspaceFolder}/code-samples/function-app-blob-input"
+        "cwd": "${workspaceFolder}/code-samples/function-app-eventgrid-trigger"
       }
     },
     {
@@ -31,7 +31,7 @@
       },
       "problemMatcher": "$msCompile",
       "options": {
-        "cwd": "${workspaceFolder}/code-samples/function-app-blob-input"
+        "cwd": "${workspaceFolder}/code-samples/function-app-eventgrid-trigger"
       }
     },
     {
@@ -47,7 +47,7 @@
       "type": "process",
       "problemMatcher": "$msCompile",
       "options": {
-        "cwd": "${workspaceFolder}/code-samples/function-app-blob-input"
+        "cwd": "${workspaceFolder}/code-samples/function-app-eventgrid-trigger"
       }
     },
     {
@@ -64,14 +64,14 @@
       "dependsOn": "clean release",
       "problemMatcher": "$msCompile",
       "options": {
-        "cwd": "${workspaceFolder}/code-samples/function-app-blob-input"
+        "cwd": "${workspaceFolder}/code-samples/function-app-eventgrid-trigger"
       }
     },
     {
       "type": "func",
       "dependsOn": "build",
       "options": {
-        "cwd": "${workspaceFolder}/code-samples/function-app-blob-input/bin/Debug/netcoreapp3.1"
+        "cwd": "${workspaceFolder}/code-samples/function-app-eventgrid-trigger/bin/Debug/netcoreapp3.1"
       },
       "command": "host start",
       "isBackground": true,
