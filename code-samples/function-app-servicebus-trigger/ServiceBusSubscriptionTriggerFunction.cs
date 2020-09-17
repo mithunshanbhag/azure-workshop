@@ -5,11 +5,11 @@ using Microsoft.Extensions.Logging;
 
 namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApp
 {
-    public static class ServiceBusQueueTriggerFunction
+    public static class ServiceBusSubscriptionTriggerFunction
     {
-        [FunctionName("ServiceBusQueueTriggerFunction")]
+        [FunctionName("ServiceBusSubscriptionTriggerFunction")]
         public static void Run(
-            [ServiceBusTrigger("@replace-servicebus-queue-name")] string myMessage,
+            [ServiceBusTrigger("@replace-with-topic-name", "@replace-with-subscription-name")] string myMessage,
             int deliveryCount, // message metadata
             string messageId, // message metadata
             ILogger log)
