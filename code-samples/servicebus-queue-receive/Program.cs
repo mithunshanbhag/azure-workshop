@@ -6,10 +6,9 @@ using Microsoft.Azure.ServiceBus;
 
 namespace AzureFundamentalsWorkshop.CodeSamples.ServiceBus
 {
-    class Program : IDisposable
+    class Program
     {
-        private readonly int numMessages = 5; // arbitrary value
-        private readonly string connectionString = "@replace-with-service-bus-connection-string";
+        private readonly string connectionString = "@replace-with-connection-string";
         private readonly string queueName = "@replace-with-queue-name";
         private readonly IQueueClient queueClient;
 
@@ -18,25 +17,9 @@ namespace AzureFundamentalsWorkshop.CodeSamples.ServiceBus
             queueClient = new QueueClient(connectionString, queueName); // note: default receive mode is peek-lock
         }
 
-        public void Dispose()
+        public async Task CloseConnectionAsync()
         {
-            if (this.queueClient != null)
-            {
-                this.queueClient.CloseAsync();
-            }
-        }
-
-        public async Task SendMessagesAsync()
-        {
-            for (int i = 0; i < this.numMessages; i++)
-            {
-                var messageText = $"{Guid.NewGuid()} - {DateTime.Now.ToString()}";
-                var messageBytes = Encoding.UTF8.GetBytes(messageText);
-                var message = new Message(messageBytes);
-
-                await this.queueClient.SendAsync(message);
-                Console.WriteLine($"Sent message: {messageText}");
-            }
+            await this.queueClient.CloseAsync();
         }
 
         public void ReceiveMessages()
@@ -85,11 +68,11 @@ namespace AzureFundamentalsWorkshop.CodeSamples.ServiceBus
         static async Task Main(string[] args)
         {
             Program p = new Program();
-            await p.SendMessagesAsync(); // uncomment this to send messages
-            // p.ReceiveMessages(); // uncomment this to receive messages
+            p.ReceiveMessages();
 
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();
+            await p.CloseConnectionAsync();
         }
     }
 }

@@ -30,7 +30,7 @@
 
 Create a console app which posts messages (text) to a service bus queue.
 
-[[SOLUTION]](../code-samples/servicebus-queue/program.cs)
+[[SOLUTION]](../code-samples/servicebus-queue-send/program.cs)
 
 -----
 
@@ -38,7 +38,7 @@ Create a console app which posts messages (text) to a service bus queue.
 
 Modify above console app to all receive/dequeue messages from above service bus queue.
 
-[[SOLUTION]](../code-samples/servicebus-queue/program.cs)
+[[SOLUTION]](../code-samples/servicebus-queue-receive/program.cs)
 
 -----
 
