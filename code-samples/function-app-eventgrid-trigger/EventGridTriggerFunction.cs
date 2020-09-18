@@ -12,7 +12,9 @@ namespace function_app_eventgrid_trigger
     public static class EventGridTriggerFunction
     {
         [FunctionName("EventGridTriggerFunction")]
-        public static void Run([EventGridTrigger]EventGridEvent eventGridEvent, ILogger log)
+        public static void Run(
+            [EventGridTrigger] EventGridEvent eventGridEvent,
+            ILogger log)
         {
             log.LogInformation(eventGridEvent.Data.ToString());
         }
