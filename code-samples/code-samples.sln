@@ -35,6 +35,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "function-app-eventgrid-trig
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "function-app-durable-chaining", "function-app-durable-chaining\function-app-durable-chaining.csproj", "{6C4E95B6-3AD1-4726-805F-66FD1EF9770D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "function-app-blob-images", "function-app-blob-images\function-app-blob-images.csproj", "{DA507D7A-239F-4CAB-98F7-A77CD0F46DA2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -240,5 +242,17 @@ Global
 		{6C4E95B6-3AD1-4726-805F-66FD1EF9770D}.Release|x64.Build.0 = Release|Any CPU
 		{6C4E95B6-3AD1-4726-805F-66FD1EF9770D}.Release|x86.ActiveCfg = Release|Any CPU
 		{6C4E95B6-3AD1-4726-805F-66FD1EF9770D}.Release|x86.Build.0 = Release|Any CPU
+		{DA507D7A-239F-4CAB-98F7-A77CD0F46DA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA507D7A-239F-4CAB-98F7-A77CD0F46DA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA507D7A-239F-4CAB-98F7-A77CD0F46DA2}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DA507D7A-239F-4CAB-98F7-A77CD0F46DA2}.Debug|x64.Build.0 = Debug|Any CPU
+		{DA507D7A-239F-4CAB-98F7-A77CD0F46DA2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DA507D7A-239F-4CAB-98F7-A77CD0F46DA2}.Debug|x86.Build.0 = Debug|Any CPU
+		{DA507D7A-239F-4CAB-98F7-A77CD0F46DA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA507D7A-239F-4CAB-98F7-A77CD0F46DA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA507D7A-239F-4CAB-98F7-A77CD0F46DA2}.Release|x64.ActiveCfg = Release|Any CPU
+		{DA507D7A-239F-4CAB-98F7-A77CD0F46DA2}.Release|x64.Build.0 = Release|Any CPU
+		{DA507D7A-239F-4CAB-98F7-A77CD0F46DA2}.Release|x86.ActiveCfg = Release|Any CPU
+		{DA507D7A-239F-4CAB-98F7-A77CD0F46DA2}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

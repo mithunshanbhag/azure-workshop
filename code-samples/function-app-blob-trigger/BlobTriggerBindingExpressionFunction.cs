@@ -79,7 +79,6 @@ namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApps
             log.LogInformation($"Blob Content: {blobContents}");
         }
 
-
         #endregion // metadata
     }
 }
