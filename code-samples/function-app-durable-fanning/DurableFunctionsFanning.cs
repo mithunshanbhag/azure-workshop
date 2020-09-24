@@ -8,7 +8,7 @@ using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
 using System.Linq;
 
-namespace Company.Function
+namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApps
 {
     public static class DurableFunctionsFanning
     {

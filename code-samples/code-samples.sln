@@ -37,6 +37,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "function-app-durable-chaini
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "function-app-blob-images", "function-app-blob-images\function-app-blob-images.csproj", "{DA507D7A-239F-4CAB-98F7-A77CD0F46DA2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "function-app-dependency-injection", "function-app-dependency-injection\function-app-dependency-injection.csproj", "{AB6F94CE-66C6-43DD-BE79-7DBC3429FBD9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -254,5 +256,17 @@ Global
 		{DA507D7A-239F-4CAB-98F7-A77CD0F46DA2}.Release|x64.Build.0 = Release|Any CPU
 		{DA507D7A-239F-4CAB-98F7-A77CD0F46DA2}.Release|x86.ActiveCfg = Release|Any CPU
 		{DA507D7A-239F-4CAB-98F7-A77CD0F46DA2}.Release|x86.Build.0 = Release|Any CPU
+		{AB6F94CE-66C6-43DD-BE79-7DBC3429FBD9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB6F94CE-66C6-43DD-BE79-7DBC3429FBD9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB6F94CE-66C6-43DD-BE79-7DBC3429FBD9}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{AB6F94CE-66C6-43DD-BE79-7DBC3429FBD9}.Debug|x64.Build.0 = Debug|Any CPU
+		{AB6F94CE-66C6-43DD-BE79-7DBC3429FBD9}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{AB6F94CE-66C6-43DD-BE79-7DBC3429FBD9}.Debug|x86.Build.0 = Debug|Any CPU
+		{AB6F94CE-66C6-43DD-BE79-7DBC3429FBD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB6F94CE-66C6-43DD-BE79-7DBC3429FBD9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB6F94CE-66C6-43DD-BE79-7DBC3429FBD9}.Release|x64.ActiveCfg = Release|Any CPU
+		{AB6F94CE-66C6-43DD-BE79-7DBC3429FBD9}.Release|x64.Build.0 = Release|Any CPU
+		{AB6F94CE-66C6-43DD-BE79-7DBC3429FBD9}.Release|x86.ActiveCfg = Release|Any CPU
+		{AB6F94CE-66C6-43DD-BE79-7DBC3429FBD9}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

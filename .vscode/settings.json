@@ -1,8 +1,8 @@
 {
-    "azureFunctions.deploySubpath": "code-samples/function-app-keyvault-demo/bin/Release/netcoreapp3.1/publish",
+    "azureFunctions.deploySubpath": "code-samples/function-app-dependency-injection/bin/Release/netcoreapp3.1/publish",
     "azureFunctions.projectLanguage": "C#",
     "azureFunctions.projectRuntime": "~3",
     "debug.internalConsoleOptions": "neverOpen",
-    "azureFunctions.projectSubpath": "code-samples/function-app-keyvault-demo",
+    "azureFunctions.projectSubpath": "code-samples/function-app-dependency-injection",
     "azureFunctions.preDeployTask": "publish"
 }
