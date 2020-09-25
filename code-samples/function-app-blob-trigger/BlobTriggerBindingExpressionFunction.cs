@@ -13,7 +13,7 @@ namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApps
         // blob filename (full name including extension)
         [FunctionName("BlobTriggerBindingExpressionDemo1")]
         public static void RunBlobTriggerBindingExpressionDemo1(
-            [BlobTrigger("mycontainer/{blobFullName}")] string blobContents,
+            [BlobTrigger("mycontainer1/{blobFullName}")] string blobContents,
             string blobFullName,
             ILogger log)
         {
@@ -25,7 +25,7 @@ namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApps
         // blob filename and extension
         [FunctionName("BlobTriggerBindingExpressionDemo2")]
         public static void RunBlobTriggerBindingExpressionDemo2(
-            [BlobTrigger("mycontainer/{blobName}.{blobExt}")] string blobContents,
+            [BlobTrigger("mycontainer1/{blobName}.{blobExt}")] string blobContents,
             string blobName,
             string blobExt,
             ILogger log)
@@ -38,7 +38,7 @@ namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApps
         // blob filename (pattern match)
         [FunctionName("BlobTriggerBindingExpressionDemo3")]
         public static void RunBlobTriggerBindingExpressionDemo3(
-            [BlobTrigger("mycontainer/{blobName}.txt")] string blobContents,
+            [BlobTrigger("mycontainer1/{blobName}.txt")] string blobContents,
             string blobName,
             ILogger log)
         {
@@ -50,7 +50,7 @@ namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApps
         // blob filename (pattern match)
         [FunctionName("BlobTriggerBindingExpressionDemo4")]
         public static void BlobTriggerBindingExpressionDemo4(
-            [BlobTrigger("mycontainer/{blobNamePart1}-{blobNamePart2}.txt")] string blobContents,
+            [BlobTrigger("mycontainer1/{blobNamePart1}-{blobNamePart2}.txt")] string blobContents,
             string blobNamePart1,
             string blobNamePart2,
             ILogger log)
@@ -66,7 +66,7 @@ namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApps
 
         [FunctionName("BlobTriggerBindingExpressionDemo5")]
         public static void BlobTriggerBindingExpressionDemo5(
-            [BlobTrigger("mycontainer/{blobName}")] string blobContents,
+            [BlobTrigger("mycontainer1/{blobName}")] string blobContents,
             string blobName,
             string blobTrigger, // note: param name must match specs
             Uri uri,

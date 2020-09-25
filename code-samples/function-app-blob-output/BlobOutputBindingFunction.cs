@@ -11,7 +11,7 @@ namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApps
         [FunctionName("BlobOutputBindingFunction")]
         public static void Run(
             [TimerTrigger("0 */1 * * * *")] TimerInfo myTimer,
-            [Blob("mycontainer/foo-{DateTime}.txt", FileAccess.Write)] out string contentToWrite,
+            [Blob("mycontainer1/foo-{DateTime}.txt", FileAccess.Write)] out string contentToWrite,
             ILogger log)
         {
             log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");

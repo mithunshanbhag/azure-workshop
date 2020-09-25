@@ -10,7 +10,7 @@ namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApps
     {
         [FunctionName("BlobTriggerFunction")]
         public static void Run(
-            [BlobTrigger("mycontainer/{blobName}")] string blobContents,
+            [BlobTrigger("mycontainer1/{blobName}")] string blobContents,
             string blobName,
             ILogger log)
         {

@@ -37,7 +37,7 @@ namespace function_app_blob_images
 
         private static async Task GenerateThumbnailAsync(Image input, Stream output)
         {
-            input.Mutate(img => img.Resize(32, 32));
+            input.Mutate(img => img.Resize(32, 32)); // arbitrary size
             await input.SaveAsPngAsync(output);
         }
     }
