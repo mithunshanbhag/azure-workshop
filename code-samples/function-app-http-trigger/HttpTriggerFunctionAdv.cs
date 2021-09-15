@@ -13,27 +13,27 @@ namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApps
 {
     public class WeatherRequest
     {
-        public string City;
+        public string City { get; set; }
     }
 
     public class DailyWeather
     {
-        public DateTime Date;
-        public double celciusHigh;
-        public double celciusLow;
+        public DateTime Date { get; set; }
+        public double celciusHigh { get; set; }
+        public double celciusLow { get; set; }
     }
 
     public class WeatherResponse
     {
-        public string City;
-        public IEnumerable<DailyWeather> DailyReport;
+        public string City { get; set; }
+        public IEnumerable<DailyWeather> DailyReport { get; set; }
     }
 
     public static class HttpTriggerFunctionAdv
     {
         [FunctionName("HttpTriggerFunctionAdv")]
         public static ActionResult Run(
-            [HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] WeatherRequest request,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] WeatherRequest request,
             ILogger log)
         {
             log.LogInformation($"C# HTTP trigger function received a request: {JsonConvert.SerializeObject(request)}");

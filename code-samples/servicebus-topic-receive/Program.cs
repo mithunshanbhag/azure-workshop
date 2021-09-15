@@ -21,6 +21,7 @@ namespace AzureFundamentalsWorkshop.CodeSamples.ServiceBus
         public async Task CloseConnectionAsync()
         {
             await this.subscriptionClient.CloseAsync();
+            Console.WriteLine($"Client connection closed");
         }
 
         public void ReceiveMessages()

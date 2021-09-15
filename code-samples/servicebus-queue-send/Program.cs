@@ -8,7 +8,7 @@ namespace AzureFundamentalsWorkshop.CodeSamples.ServiceBus
 {
     class Program
     {
-        private readonly int numMessages = 100; // arbitrary value
+        private readonly int numMessages = 10; // arbitrary value
         private readonly string connectionString = "@replace-with-connection-string";
         private readonly string queueName = "@replace-with-queue-name";
         private readonly IQueueClient queueClient;
