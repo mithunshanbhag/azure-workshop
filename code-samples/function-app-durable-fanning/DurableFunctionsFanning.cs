@@ -41,7 +41,7 @@ namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApps
         public static string Reverse([ActivityTrigger] IDurableActivityContext context, ILogger log)
         {
             var token = context.GetInput<string>();
-            return token;
+            return string.Join("", token.ToArray().Reverse());
         }
     }
 }

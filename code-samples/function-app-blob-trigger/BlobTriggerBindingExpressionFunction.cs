@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApps
 {
-    public static class BlobBindingExpressionFunctions
+    public static class BlobTriggerBindingExpressionFunction
     {
         #region filenames
 
@@ -43,7 +43,7 @@ namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApps
             ILogger log)
         {
             log.LogInformation($"Function triggered: RunBlobTriggerBindingExpressionDemo3");
-            log.LogInformation($"Blob Name (minus extension): {blobName}.txt");
+            log.LogInformation($"Blob Name (minus extension): {blobName}");
             log.LogInformation($"Blob Content: {blobContents}");
         }
 

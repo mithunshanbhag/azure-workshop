@@ -11,7 +11,7 @@
     }
     ```
 
-* Create a container named `mycontainer` in the storage account associated with the function app. This is required for the blob storage trigger/input-binding demos to work.
+* Create a container named `mycontainer1` in the storage account associated with the function app. This is required for the blob storage trigger/input-binding demos to work.
 
 * In the `host.json` explicitly mention the name of the functions that need to be executed.
 

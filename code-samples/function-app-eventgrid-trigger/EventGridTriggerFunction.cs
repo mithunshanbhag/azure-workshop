@@ -6,6 +6,7 @@ using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Azure.EventGrid.Models;
 using Microsoft.Azure.WebJobs.Extensions.EventGrid;
 using Microsoft.Extensions.Logging;
+using System.Threading.Tasks;
 
 namespace function_app_eventgrid_trigger
 {
@@ -13,10 +14,12 @@ namespace function_app_eventgrid_trigger
     {
         [FunctionName("EventGridTriggerFunction")]
         public static void Run(
-            [EventGridTrigger] EventGridEvent eventGridEvent,
+            [EventGridTrigger] EventGridEvent ev,
             ILogger log)
         {
-            log.LogInformation(eventGridEvent.Data.ToString());
+            log.LogInformation($"Event Type: {ev.EventType}");
+            log.LogInformation($"Event Subject: {ev.Subject}");
+            log.LogInformation($"Event Data: {ev.Data.ToString()}");
         }
     }
 }

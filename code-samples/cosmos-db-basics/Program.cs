@@ -5,7 +5,7 @@ namespace AzureFundamentalsWorkshop.CodeSamples.CosmosDB
 {
     class Program
     {
-        private static readonly string endpointUrl = "<@replace-with-account-key>";
+        private static readonly string endpointUrl = "<@replace-with-endpoint-uri>";
         private static readonly string accountKey = "<@replace-with-account-key>";
 
         static async Task Main(string[] args)
