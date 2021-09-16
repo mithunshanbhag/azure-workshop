@@ -3,7 +3,7 @@ namespace AzureFundamentalsWorkshop.CodeSamples.CosmosDB
     using System.Collections.Generic;
     using System.Threading.Tasks;
 
-    public interface ICosmosService
+    public interface IContactService
     {
         Task<IEnumerable<Contact>> ListContactsAsync();
 

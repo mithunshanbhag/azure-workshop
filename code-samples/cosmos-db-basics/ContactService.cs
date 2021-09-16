@@ -7,7 +7,7 @@ namespace AzureFundamentalsWorkshop.CodeSamples.CosmosDB
     using Microsoft.Azure.Cosmos;
     using Microsoft.Azure.Cosmos.Fluent;
 
-    public class CosmosService : ICosmosService
+    public class CosmosService : IContactService
     {
         private CosmosClient cosmosClient;
         private Database database;
