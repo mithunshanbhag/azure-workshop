@@ -1,5 +1,8 @@
 # Labs: Virtual Machines
 
+> NOTE: In the latest release of Azure CLI (2.33.0), all VM creation commands are seemingly broken! [Link to issue](https://docs.microsoft.com/en-us/answers/questions/731255/vmcustomization-subscription.html).
+
+
 ## #1: Create an Ubuntu VM and SSH into it
 
 * Type the following command in Azure CLI to create the Ubuntu VM.
