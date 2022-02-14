@@ -1,32 +1,28 @@
+using Azure.Extensions.AspNetCore.Configuration.Secrets;
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
+using AzureFundamentalsWorkshop.CodeSamples.FunctionApps;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
-using Microsoft.Azure.KeyVault;
-using Microsoft.Azure.Services.AppAuthentication;
-using Microsoft.Extensions.Configuration.AzureKeyVault;
 using Microsoft.Extensions.Configuration;
 
-[assembly: FunctionsStartup(typeof(AzureFundamentalsWorkshop.CodeSamples.FunctionApps.Startup))]
+[assembly: FunctionsStartup(typeof(Startup))]
 
-namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApps
+namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApps;
+
+public class Startup : FunctionsStartup
 {
-    public class Startup : FunctionsStartup
+    public override void Configure(IFunctionsHostBuilder builder)
     {
-        public override void Configure(IFunctionsHostBuilder builder)
-        {
-        }
+    }
 
-        public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
-        {
-            var azureServiceTokenProvider = new AzureServiceTokenProvider();
+    public override void ConfigureAppConfiguration(IFunctionsConfigurationBuilder builder)
+    {
+        var builtConfig = builder.ConfigurationBuilder.Build();
 
-            var keyVaultClient = new KeyVaultClient(
-                new KeyVaultClient.AuthenticationCallback(
-                    azureServiceTokenProvider.KeyVaultTokenCallback));
+        var secretClient = new SecretClient(
+            new Uri(builtConfig["KeyVaultEndpoint"]),
+            new DefaultAzureCredential());
 
-            builder.ConfigurationBuilder
-                .AddAzureKeyVault(
-                    "@replace-with-key-vault-uri", // replace later as needed
-                    keyVaultClient,
-                    new DefaultKeyVaultSecretManager());
-        }
+        builder.ConfigurationBuilder.AddAzureKeyVault(secretClient, new KeyVaultSecretManager());
     }
 }

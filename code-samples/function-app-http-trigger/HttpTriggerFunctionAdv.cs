@@ -1,59 +1,54 @@
-using System;
-using System.IO;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
-using System.Collections.Generic;
 
-namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApps
+namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApps;
+
+public class WeatherRequest
 {
-    public class WeatherRequest
-    {
-        public string City { get; set; }
-    }
+    public string City { get; set; }
+}
 
-    public class DailyWeather
-    {
-        public DateTime Date { get; set; }
-        public double celciusHigh { get; set; }
-        public double celciusLow { get; set; }
-    }
+public class DailyWeather
+{
+    public DateTime Date { get; set; }
+    public double CelciusHigh { get; set; }
+    public double CelciusLow { get; set; }
+}
 
-    public class WeatherResponse
-    {
-        public string City { get; set; }
-        public IEnumerable<DailyWeather> DailyReport { get; set; }
-    }
+public class WeatherResponse
+{
+    public string City { get; set; }
+    public IEnumerable<DailyWeather> DailyReport { get; set; }
+}
 
-    public static class HttpTriggerFunctionAdv
+public static class HttpTriggerFunctionAdv
+{
+    [FunctionName("HttpTriggerFunctionAdv")]
+    public static ActionResult Run(
+        [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]
+        WeatherRequest request,
+        ILogger log)
     {
-        [FunctionName("HttpTriggerFunctionAdv")]
-        public static ActionResult Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] WeatherRequest request,
-            ILogger log)
+        log.LogInformation($"C# HTTP trigger function received a request: {JsonConvert.SerializeObject(request)}");
+
+        var response = new WeatherResponse
         {
-            log.LogInformation($"C# HTTP trigger function received a request: {JsonConvert.SerializeObject(request)}");
-
-            var response = new WeatherResponse
+            City = request.City,
+            DailyReport = new List<DailyWeather>
             {
-                City = request.City,
-                DailyReport = new List<DailyWeather>
-                {
-                    new DailyWeather { Date = DateTime.Today, celciusHigh = 40, celciusLow = 30 },
-                    new DailyWeather { Date = DateTime.Today.AddDays(-1), celciusHigh = 39, celciusLow = 28 },
-                    new DailyWeather { Date = DateTime.Today.AddDays(-2), celciusHigh = 38, celciusLow = 27 },
-                    new DailyWeather { Date = DateTime.Today.AddDays(-3), celciusHigh = 37, celciusLow = 26 },
-                    new DailyWeather { Date = DateTime.Today.AddDays(-4), celciusHigh = 36, celciusLow = 25 },
-                    new DailyWeather { Date = DateTime.Today.AddDays(-5), celciusHigh = 35, celciusLow = 24 },
-                    new DailyWeather { Date = DateTime.Today.AddDays(-6), celciusHigh = 34, celciusLow = 23 },
-                },
-            };
+                new() {Date = DateTime.Today, CelciusHigh = 40, CelciusLow = 30},
+                new() {Date = DateTime.Today.AddDays(-1), CelciusHigh = 39, CelciusLow = 28},
+                new() {Date = DateTime.Today.AddDays(-2), CelciusHigh = 38, CelciusLow = 27},
+                new() {Date = DateTime.Today.AddDays(-3), CelciusHigh = 37, CelciusLow = 26},
+                new() {Date = DateTime.Today.AddDays(-4), CelciusHigh = 36, CelciusLow = 25},
+                new() {Date = DateTime.Today.AddDays(-5), CelciusHigh = 35, CelciusLow = 24},
+                new() {Date = DateTime.Today.AddDays(-6), CelciusHigh = 34, CelciusLow = 23}
+            }
+        };
 
-            return new OkObjectResult(response);
-        }
+        return new OkObjectResult(response);
     }
 }

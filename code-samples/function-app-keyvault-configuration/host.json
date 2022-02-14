@@ -1,14 +1,14 @@
 {
-    "version": "2.0",
-    "logging": {
-        "applicationInsights": {
-            "samplingExcludedTypes": "Request",
-            "samplingSettings": {
-                "isEnabled": true
-            }
-        },
-        "logLevel": {
-            "AzureFundamentalsWorkshop.CodeSamples.FunctionApps.HttpTriggerFunction": "Information"
-        }
+  "version": "2.0",
+  "logging": {
+    "applicationInsights": {
+      "samplingExcludedTypes": "Request",
+      "samplingSettings": {
+        "isEnabled": true
+      }
+    },
+    "logLevel": {
+      "AzureFundamentalsWorkshop.CodeSamples.FunctionApps.HttpTriggerFunction": "Information"
     }
+  }
 }

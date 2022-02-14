@@ -1,44 +1,29 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Azure.KeyVault;
-using Microsoft.Azure.Services.AppAuthentication;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Configuration.AzureKeyVault;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Azure.Extensions.AspNetCore.Configuration.Secrets;
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
 
-namespace AzureFundamentalsWorkshop.CodeSamples.AppService
+namespace AzureFundamentalsWorkshop.CodeSamples.AppService;
+
+public class Program
 {
-    public class Program
+    public static void Main(string[] args)
     {
-        public static void Main(string[] args)
-        {
-            CreateHostBuilder(args).Build().Run();
-        }
+        CreateHostBuilder(args).Build().Run();
+    }
 
-    public static IHostBuilder CreateHostBuilder(string[] args) =>
-        Host.CreateDefaultBuilder(args)
-            .ConfigureAppConfiguration((context, config) =>
+    public static IHostBuilder CreateHostBuilder(string[] args)
+    {
+        return Host.CreateDefaultBuilder(args)
+            .ConfigureAppConfiguration((context, configurationBuilder) =>
             {
-                var azureServiceTokenProvider = new AzureServiceTokenProvider();
+                var builtConfig = configurationBuilder.Build();
 
-                var keyVaultClient = new KeyVaultClient(
-                    new KeyVaultClient.AuthenticationCallback(
-                        azureServiceTokenProvider.KeyVaultTokenCallback));
+                var secretClient = new SecretClient(
+                    new Uri(builtConfig["KeyVaultEndpoint"]),
+                    new DefaultAzureCredential());
 
-                var builtConfig = config.Build();
-
-                config.AddAzureKeyVault(
-                    builtConfig["KeyVaultEndpoint"],
-                    keyVaultClient,
-                    new DefaultKeyVaultSecretManager());
+                configurationBuilder.AddAzureKeyVault(secretClient, new KeyVaultSecretManager());
             })
-            .ConfigureWebHostDefaults(webBuilder =>
-            {
-                webBuilder.UseStartup<Startup>();
-            });
+            .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); });
     }
 }

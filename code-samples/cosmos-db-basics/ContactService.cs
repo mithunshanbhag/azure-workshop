@@ -1,79 +1,78 @@
-namespace AzureFundamentalsWorkshop.CodeSamples.CosmosDB
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using System.Threading.Tasks;
+using Microsoft.Azure.Cosmos;
+
+namespace AzureFundamentalsWorkshop.CodeSamples.CosmosDB;
+
+public class CosmosService : IContactService
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
-    using Microsoft.Azure.Cosmos;
-    using Microsoft.Azure.Cosmos.Fluent;
+    private readonly string _containerName = "contactscontainer";
+    private readonly string _databaseName = "contactsdb";
 
-    public class CosmosService : IContactService
+    private Container _container;
+    private CosmosClient _cosmosClient;
+    private Database _database;
+
+    public async Task AddContactAsync(Contact contact)
     {
-        private CosmosClient cosmosClient;
-        private Database database;
-        private Container container;
+        await _container.CreateItemAsync(contact, new PartitionKey(contact.Id));
+        Console.WriteLine($"added contact: id={contact.Id}");
+    }
 
-        private readonly string databaseName = "contactsdb";
-        private readonly string containerName = "contactscontainer";
+    public async Task DeleteContactAsync(string id)
+    {
+        await _container.DeleteItemAsync<Contact>(id, new PartitionKey(id));
+        Console.WriteLine($"deleted contact: id={id}");
+    }
 
-
-        public async Task InitializeAsync(string endpointUrl, string accountKey)
+    public async Task<Contact> GetContactAsync(string id)
+    {
+        try
         {
-            this.cosmosClient = new CosmosClient(endpointUrl, accountKey);
+            var response = await _container.ReadItemAsync<Contact>(id, new PartitionKey(id));
+            Console.WriteLine($"fetched contact: id={id}");
 
-            var dbResponse = await this.cosmosClient.CreateDatabaseIfNotExistsAsync(this.databaseName);
-            this.database = dbResponse.Database;
-            Console.WriteLine($"Fetched database: {this.databaseName}");
+            return response.Resource;
+        }
+        catch (CosmosException ex) when (ex.StatusCode == HttpStatusCode.NotFound)
+        {
+            return null;
+        }
+    }
 
-            var containerResponse = await this.database.CreateContainerIfNotExistsAsync(this.containerName, "/id");
-            this.container = containerResponse.Container;
-            Console.WriteLine($"Fetched container: {this.containerName}");
+    public async Task<IEnumerable<Contact>> ListContactsAsync()
+    {
+        var query = _container.GetItemQueryIterator<Contact>(new QueryDefinition("select * from c"));
+        var results = new List<Contact>();
+        while (query.HasMoreResults)
+        {
+            var response = await query.ReadNextAsync();
+            results.AddRange(response.ToList());
         }
 
-        public async Task AddContactAsync(Contact contact)
-        {
-            await this.container.CreateItemAsync<Contact>(contact, new PartitionKey(contact.Id));
-            Console.WriteLine($"added contact: id={contact.Id}");
-        }
+        return results;
+    }
 
-        public async Task DeleteContactAsync(string id)
-        {
-            await this.container.DeleteItemAsync<Contact>(id, new PartitionKey(id));
-            Console.WriteLine($"deleted contact: id={id}");
-        }
+    public async Task UpdateContactAsync(string id, Contact contact)
+    {
+        await _container.UpsertItemAsync(contact, new PartitionKey(id));
+        Console.WriteLine($"updated contact: id={id}");
+    }
 
-        public async Task<Contact> GetContactAsync(string id)
-        {
-            try
-            {
-                ItemResponse<Contact> response = await this.container.ReadItemAsync<Contact>(id, new PartitionKey(id));
-                Console.WriteLine($"fetched contact: id={id}");
 
-                return response.Resource;
-            }
-            catch (CosmosException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
-            {
-                return null;
-            }
-        }
+    public async Task InitializeAsync(string endpointUrl, string accountKey)
+    {
+        _cosmosClient = new CosmosClient(endpointUrl, accountKey);
 
-        public async Task<IEnumerable<Contact>> ListContactsAsync()
-        {
-            var query = this.container.GetItemQueryIterator<Contact>(new QueryDefinition("select * from c"));
-            List<Contact> results = new List<Contact>();
-            while (query.HasMoreResults)
-            {
-                var response = await query.ReadNextAsync();
-                results.AddRange(response.ToList());
-            }
+        var dbResponse = await _cosmosClient.CreateDatabaseIfNotExistsAsync(_databaseName);
+        _database = dbResponse.Database;
+        Console.WriteLine($"Fetched database: {_databaseName}");
 
-            return results;
-        }
-
-        public async Task UpdateContactAsync(string id, Contact contact)
-        {
-            await this.container.UpsertItemAsync<Contact>(contact, new PartitionKey(id));
-            Console.WriteLine($"updated contact: id={id}");
-        }
+        var containerResponse = await _database.CreateContainerIfNotExistsAsync(_containerName, "/id");
+        _container = containerResponse.Container;
+        Console.WriteLine($"Fetched container: {_containerName}");
     }
 }

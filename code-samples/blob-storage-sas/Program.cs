@@ -1,69 +1,64 @@
-﻿using System;
-using Azure.Storage.Blobs;
-using System.Threading.Tasks;
+﻿using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
-using System.Collections.Generic;
-using System.IO;
 
-namespace AzureFundamentalsWorkshop.CodeSamples.BlobStorage
+namespace AzureFundamentalsWorkshop.CodeSamples.BlobStorage;
+
+public class BlobStorageSas
 {
-    public class BlobStorageSAS
+    private readonly string _connectionString = "DefaultEndpointsProtocol=https;AccountName=azsrvwkrg2;AccountKey=IxVwr5/YFqwt16UGpQ88591Q4ARo9ch+bmK+fvhgfgSlvtF3nAUNOTzTOyp4ty+e4hM1AI0mFjT9KmaBJZI98w==;EndpointSuffix=core.windows.net";
+    private readonly BlobServiceClient _serviceClient;
+
+    private BlobStorageSas()
     {
-        private readonly string connectionString = "<@replace-with-connection-string>";
-        private readonly BlobServiceClient serviceClient;
+        _serviceClient = new BlobServiceClient(_connectionString);
+    }
 
-        BlobStorageSAS()
+    private async Task DeleteContainersAsync()
+    {
+        Console.WriteLine($"Deleting containers in storage account '{_serviceClient.AccountName}'");
+        foreach (var container in _serviceClient.GetBlobContainers())
         {
-            this.serviceClient = new BlobServiceClient(this.connectionString);
-        }
-
-        private async Task DeleteContainersAsync()
-        {
-            Console.WriteLine($"Deleting containers in storage account '{this.serviceClient.AccountName}'");
-            foreach (var container in this.serviceClient.GetBlobContainers())
-            {
-                await this.serviceClient.DeleteBlobContainerAsync(container.Name);
-                Console.WriteLine($"\t{container.Name}");
-            }
-        }
-
-        private async Task<BlobContainerClient> CreateContainerAsync()
-        {
-            Console.WriteLine($"Creating container in storage account '{this.serviceClient.AccountName}'");
-            var accessType = PublicAccessType.BlobContainer;
-            var response = (await this.serviceClient.CreateBlobContainerAsync($"my-container-access-{accessType.ToString().ToLowerInvariant()}", accessType));
-            var container = response?.Value;
+            await _serviceClient.DeleteBlobContainerAsync(container.Name);
             Console.WriteLine($"\t{container.Name}");
-            return container;
         }
+    }
 
-        private async Task UploadBlobsAsync(BlobContainerClient container)
+    private async Task<BlobContainerClient> CreateContainerAsync()
+    {
+        Console.WriteLine($"Creating container in storage account '{_serviceClient.AccountName}'");
+        var accessType = PublicAccessType.BlobContainer;
+        var response = await _serviceClient.CreateBlobContainerAsync($"my-container-access-{accessType.ToString().ToLowerInvariant()}", accessType);
+        var container = response?.Value;
+        Console.WriteLine($"\t{container?.Name}");
+        return container;
+    }
+
+    private async Task UploadBlobsAsync(BlobContainerClient container)
+    {
+        Console.WriteLine($"Uploading files to container '{container.Name}'");
+        foreach (var fileName in new List<string> {"sample.csv", "sample.json", "sample.txt"})
         {
-            Console.WriteLine($"Uploading files to container '{container.Name}'");
-            foreach (var fileName in new List<string> { "sample.csv", "sample.json", "sample.txt" })
-            {
-                await container.UploadBlobAsync(fileName, File.OpenRead($"./{fileName}"));
-                Console.WriteLine($"\t{fileName}");
-            }
+            await container.UploadBlobAsync(fileName, File.OpenRead($"./{fileName}"));
+            Console.WriteLine($"\t{fileName}");
         }
+    }
 
-        static async Task Main(string[] args)
+    private static async Task Main()
+    {
+        var demo = new BlobStorageSas();
+
+        try
         {
-            var demo = new BlobStorageSAS();
-
-            try
-            {
-                var container = await demo.CreateContainerAsync();
-                await demo.UploadBlobsAsync(container);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Exception Caught: ${ex.Message}");
-            }
-            finally
-            {
-                await demo.DeleteContainersAsync();
-            }
+            var container = await demo.CreateContainerAsync();
+            await demo.UploadBlobsAsync(container);
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Exception Caught: ${ex.Message}");
+        }
+        finally
+        {
+            await demo.DeleteContainersAsync();
         }
     }
 }

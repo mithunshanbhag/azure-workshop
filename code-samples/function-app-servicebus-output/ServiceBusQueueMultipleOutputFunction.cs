@@ -1,25 +1,21 @@
-using System;
-using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Host;
 using Microsoft.Extensions.Logging;
 
-namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApp
+namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApps;
+
+public static class ServiceBusQueueMultipleOutputFunction
 {
-    public static class ServiceBusQueueMultipleOutputFunction
+    [FunctionName("ServiceBusQueueMultipleOutputFunction")]
+    public static async Task Run(
+        [TimerTrigger("*/30 * * * * *")] TimerInfo myTimer,
+        [ServiceBus("myqueue1")] IAsyncCollector<string> collector,
+        ILogger log)
     {
-        [FunctionName("ServiceBusQueueMultipleOutputFunction")]
-        public static async Task Run(
-            [TimerTrigger("*/30 * * * * *")] TimerInfo myTimer,
-            [ServiceBus("myqueue1")] IAsyncCollector<string> collector,
-            ILogger log)
+        for (var i = 0; i < 50; i++)
         {
-            for (int i = 0; i < 50; i++)
-            {
-                var message = $"Message #{i} was generated at {DateTime.Now}";
-                log.LogInformation($"Writing message: {message}");
-                await collector.AddAsync(message);
-            }
+            var message = $"Message #{i} was generated at {DateTime.Now}";
+            log.LogInformation($"Writing message: {message}");
+            await collector.AddAsync(message);
         }
     }
 }

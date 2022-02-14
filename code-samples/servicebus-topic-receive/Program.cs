@@ -1,80 +1,82 @@
-﻿using System;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Azure.ServiceBus;
+﻿using Azure.Messaging.ServiceBus;
 
-namespace AzureFundamentalsWorkshop.CodeSamples.ServiceBus
+namespace AzureFundamentalsWorkshop.CodeSamples.ServiceBus;
+
+public class Program
 {
-    class Program
+    private readonly string _connectionString = "@replace-with-connection-string";
+    private readonly ServiceBusClient _serviceBusClient;
+    private readonly ServiceBusProcessor _serviceBusProcessor;
+    private readonly string _subscriptionName = "mysubscription1";
+    private readonly string _topicName = "mytopic1";
+
+    private Program()
     {
-        private readonly string connectionString = "@replace-with-connection-string";
-        private readonly string topicName = "@replace-with-topic-name";
-        private readonly string subscriptionName = "@replace-with-subscription-name";
-        private readonly ISubscriptionClient subscriptionClient;
+        _serviceBusClient = new ServiceBusClient(_connectionString);
+        _serviceBusProcessor = _serviceBusClient.CreateProcessor(_topicName, _subscriptionName); // note: default receive mode is peek-lock
+    }
 
-        Program()
-        {
-            subscriptionClient = new SubscriptionClient(connectionString, topicName, subscriptionName); // note: default receive mode is peek-lock
-        }
+    public async Task CloseConnectionAsync()
+    {
+        await _serviceBusProcessor.StopProcessingAsync();
+        await _serviceBusProcessor.CloseAsync();
+        await _serviceBusClient.DisposeAsync();
+        Console.WriteLine("Client connection closed");
+    }
 
-        public async Task CloseConnectionAsync()
-        {
-            await this.subscriptionClient.CloseAsync();
-            Console.WriteLine($"Client connection closed");
-        }
+    public async Task ReceiveMessagesAsync()
+    {
+        // Register the function that will process messages
+        _serviceBusProcessor.ProcessMessageAsync += ProcessMessagesAsync;
+        _serviceBusProcessor.ProcessErrorAsync += ProcessErrorsAsync;
+        await _serviceBusProcessor.StartProcessingAsync();
+    }
 
-        public void ReceiveMessages()
-        {
-            // Note: By default MessageHandlerOptions's 'autocomplete' is true.
-            var msgHandlerOptions = new MessageHandlerOptions((args) => Task.CompletedTask);
+    private async Task ProcessMessagesAsync(ProcessMessageEventArgs args)
+    {
+        var message = args.Message;
+        var messageText = message.Body.ToString();
+        Console.WriteLine($"Received message: {messageText}, delivery count: {message.DeliveryCount}");
 
-            // Register the function that will process messages
-            this.subscriptionClient.RegisterMessageHandler(ProcessMessagesAsync, msgHandlerOptions);
-        }
+        /*
+            Note: Un-commenting below line will cause message to be 'abandoned' immediately.
+            Message delivery will be retried if max delivery count has not been exceeded.
+        */
+        // throw new Exception("thrown deliberately");
 
-        private async Task ProcessMessagesAsync(Message message, CancellationToken token)
-        {
-            var messageBytes = message.Body;
-            var messageText = Encoding.UTF8.GetString(message.Body);
-            Console.WriteLine($"Received message: {messageText}, delivery count: {message.SystemProperties.DeliveryCount}");
+        /*
+            Note: un-commenting below line will cause message to be 'abandoned' immediately.
+            Message delivery will be retried if max delivery count has not been exceeded.
+        */
+        // await args.AbandonMessageAsync(message);
 
-            /*
-                Note: Un-commenting below line will cause message to be 'abandoned' immediately.
-                Message delivery will be retried if max delivery count has not been exceeded.
-            */
-            // throw new Exception("thrown deliberately");
+        /*
+            Note: un-commenting below line will cause message to be 'deadlettered' immediately.
+            Message delivery will NOT be retried (irrespective of whether the message delivery count 
+            has been exceeded or not).
+        */
+        // await args.DeadLetterMessageAsync(message);
 
-            /*
-                Note: un-commenting below line will cause message to be 'abandoned' immediately.
-                Message delivery will be retried if max delivery count has not been exceeded.
-            */
-            // await this.queueClient.AbandonAsync(message.SystemProperties.LockToken);
+        /*
+            Note: un-commenting below line will cause message to be marked 'completed' immediately.
+            Technically this is not required since MessageHandlerOptions's 'autoComplete' is set to true by default.
+        */
+        await args.CompleteMessageAsync(message);
+    }
 
-            /*
-                Note: un-commenting below line will cause message to be 'deadlettered' immediately.
-                Message delivery will NOT be retried (irrespective of whether the message delivery count 
-                has been exceeded or not).
-            */
-            // await this.queueClient.DeadLetterAsync(message.SystemProperties.LockToken);
+    private Task ProcessErrorsAsync(ProcessErrorEventArgs args)
+    {
+        Console.WriteLine($"Received error: {args.Exception.Message}");
+        return Task.CompletedTask;
+    }
 
-            /*
-                Note: un-commenting below line will cause message to be marked 'completed' immediately.
-                Technically this is not required since MessageHandlerOptions's 'autoComplete' is set to true by default.
-            */
-            // await this.queueClient.CompleteAsync(message.SystemProperties.LockToken);
+    private static async Task Main()
+    {
+        var p = new Program();
+        await p.ReceiveMessagesAsync();
 
-            await Task.CompletedTask;
-        }
-
-        static async Task Main(string[] args)
-        {
-            Program p = new Program();
-            p.ReceiveMessages();
-
-            Console.WriteLine("Press any key to exit...");
-            Console.ReadKey();
-            await p.CloseConnectionAsync();
-        }
+        Console.WriteLine("Press any key to exit...");
+        Console.ReadKey();
+        await p.CloseConnectionAsync();
     }
 }

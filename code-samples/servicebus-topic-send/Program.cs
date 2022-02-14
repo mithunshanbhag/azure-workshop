@@ -1,50 +1,47 @@
-﻿using System;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using Microsoft.Azure.ServiceBus;
+﻿using Azure.Messaging.ServiceBus;
 
-namespace AzureFundamentalsWorkshop.CodeSamples.ServiceBus
+namespace AzureFundamentalsWorkshop.CodeSamples.ServiceBus;
+
+public class Program
 {
-    class Program
+    private readonly string _connectionString = "@replace-with-connection-string";
+    private readonly int _numMessages = 5; // arbitrary value
+    private readonly ServiceBusClient _serviceBusClient;
+    private readonly ServiceBusSender _serviceBusSender;
+    private readonly string _topicName = "mytopic1";
+
+    private Program()
     {
-        private readonly int numMessages = 10; // arbitrary value
-        private readonly string connectionString = "@replace-with-connection-string";
-        private readonly string topicName = "@replace-with-queue-name";
-        private readonly ITopicClient topicClient;
+        _serviceBusClient = new ServiceBusClient(_connectionString);
+        _serviceBusSender = _serviceBusClient.CreateSender(_topicName); // note: default receive mode is peek-lock
+    }
 
-        Program()
+    public async Task CloseConnectionAsync()
+    {
+        await _serviceBusSender.CloseAsync();
+        await _serviceBusClient.DisposeAsync();
+        Console.WriteLine("Client connection closed");
+    }
+
+    public async Task SendMessagesAsync()
+    {
+        for (var i = 0; i < _numMessages; i++)
         {
-            topicClient = new TopicClient(connectionString, topicName); // note: default receive mode is peek-lock
+            var messageText = $"message# {i}";
+            var message = new ServiceBusMessage(messageText);
+
+            await _serviceBusSender.SendMessageAsync(message);
+            Console.WriteLine($"Sent message: {messageText}");
         }
+    }
 
-        public async Task CloseConnectionAsync()
-        {
-            await this.topicClient.CloseAsync();
-            Console.WriteLine($"Client connection closed");
-        }
+    private static async Task Main(string[] args)
+    {
+        var p = new Program();
+        await p.SendMessagesAsync();
 
-        public async Task SendMessagesAsync()
-        {
-            for (int i = 0; i < this.numMessages; i++)
-            {
-                var messageText = $"message# {i}";
-                var messageBytes = Encoding.UTF8.GetBytes(messageText);
-                var message = new Message(messageBytes);
-
-                await this.topicClient.SendAsync(message);
-                Console.WriteLine($"Sent message: {messageText}");
-            }
-        }
-
-        static async Task Main(string[] args)
-        {
-            Program p = new Program();
-            await p.SendMessagesAsync();
-
-            Console.WriteLine("Press any key to exit...");
-            Console.ReadKey();
-            await p.CloseConnectionAsync();
-        }
+        Console.WriteLine("Press any key to exit...");
+        Console.ReadKey();
+        await p.CloseConnectionAsync();
     }
 }

@@ -1,18 +1,17 @@
-namespace AzureFundamentalsWorkshop.CodeSamples.CosmosDB
+using System.Collections.Generic;
+using System.Threading.Tasks;
+
+namespace AzureFundamentalsWorkshop.CodeSamples.CosmosDB;
+
+public interface IContactService
 {
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
+    Task<IEnumerable<Contact>> ListContactsAsync();
 
-    public interface IContactService
-    {
-        Task<IEnumerable<Contact>> ListContactsAsync();
+    Task<Contact> GetContactAsync(string id);
 
-        Task<Contact> GetContactAsync(string id);
+    Task AddContactAsync(Contact contact);
 
-        Task AddContactAsync(Contact contact);
+    Task UpdateContactAsync(string id, Contact contact);
 
-        Task UpdateContactAsync(string id, Contact contact);
-
-        Task DeleteContactAsync(string id);
-    }
+    Task DeleteContactAsync(string id);
 }
