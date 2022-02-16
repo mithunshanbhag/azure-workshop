@@ -5,7 +5,7 @@ namespace AzureFundamentalsWorkshop.CodeSamples.BlobStorage;
 
 public class BlobStorageSas
 {
-    private readonly string _connectionString = "DefaultEndpointsProtocol=https;AccountName=azsrvwkrg2;AccountKey=IxVwr5/YFqwt16UGpQ88591Q4ARo9ch+bmK+fvhgfgSlvtF3nAUNOTzTOyp4ty+e4hM1AI0mFjT9KmaBJZI98w==;EndpointSuffix=core.windows.net";
+    private readonly string _connectionString = "<@replace-with-endpoint-uri>";
     private readonly BlobServiceClient _serviceClient;
 
     private BlobStorageSas()
