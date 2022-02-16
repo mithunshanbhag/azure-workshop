@@ -91,15 +91,27 @@ public class BlobStorageBasics
     {
         var demo = new BlobStorageBasics();
 
-        foreach (var container in await demo.CreateContainersAsync())
+
+        try
         {
-            await demo.UploadBlobsAsync(container);
+            foreach (var container in await demo.CreateContainersAsync())
+            {
+                await demo.UploadBlobsAsync(container);
 
-            await demo.EnumerateBlobs(container);
-            await demo.EnumerateBlobsAnonymously(container);
+                await demo.EnumerateBlobs(container);
+                await demo.EnumerateBlobsAnonymously(container);
+            }
+
+            await demo.EnumerateContainers();
+            await demo.EnumerateContainersAnonymously();
         }
-
-        await demo.EnumerateContainers();
-        await demo.EnumerateContainersAnonymously();
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Exception Caught: ${ex.Message}");
+        }
+        finally
+        {
+            //await demo.DeleteContainersAsync();
+        }
     }
 }
