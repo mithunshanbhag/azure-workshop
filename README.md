@@ -1,8 +1,6 @@
-# Azure Fundamentals Workshop
+# Azure Workshops
 
-## [Start Here](https://github.com/mithunshanbhag/azure-fundamentals-workshop/projects/4)
-
-* [Contents](https://github.com/mithunshanbhag/azure-fundamentals-workshop/projects/4) | [Labs](./labs) ([prerequisites](./lab-prerequisites.md) | [solutions](./code-samples))
+## [Azure Fundamentals](https://github.com/mithunshanbhag/azure-fundamentals-workshop/projects/4) | [Azure Serverless](https://github.com/mithunshanbhag/azure-fundamentals-workshop/projects/17) | [Azure Microservices](https://github.com/mithunshanbhag/azure-fundamentals-workshop/projects/16)
 
 ## Notes
 
