@@ -1,95 +1,53 @@
-# Labs: Blob Storage
+# BLOB STORAGE
 
-## #1: Create a blob container and upload files (using Azure CLI)
+## #1: Data-triggered function app
 
-* Create the storage account
+Create & deploy a function app that processes blobs uploaded to a storage account's container.
 
-    ```bash
-    az storage account create -n <storage-account-name> --sku Standard_LRS
-    ```
-
-* Fetch the storage account key
-
-    ```bash
-    az storage account keys list -n <storage-account-name>
-    ```
-
-* Create a container within the storage account
-
-    ```bash
-    az storage container create -n <container-name> \
-        --account-name <storage-account-name> \
-        --account-key <storage-account-key> \
-        --public-access blob
-    ```
-
-* Upload a local file to the container
-
-    ```bash
-    az storage blob upload -c <container-name> \
-        -f <path-to-local-file> \
-        -n <new-blob-name> \
-        --account-name <storage-account-name> \
-        --account-key <storage-account-key>
-    ```
+[[SOLUTION]](../code-samples/function-app-blob-trigger/BlobTriggerFunction.cs)
 
 -----
 
-## #2: Create containers and upload blobs (using .NET Core SDK)
+## #2: Data-triggered function app (binding expressions)
 
-[[SOLUTION]](../code-samples/blob-storage-basics)
-
------
-
-## #3: Using a SAS token (using .NET Core SDK)
-
-[[SOLUTION]](../code-samples/blob-storage-sas)
+[[SOLUTION]](../code-samples/function-app-blob-trigger/BlobTriggerBindingExpressionFunction.cs)
 
 -----
 
-## #4: Deploy SPA to static blob storage
+## #3: [HomeWork] Input binding
 
-* Create a storage account and fetch its account key (see exercise #1 above).
+Create & deploy a function app that reads from an existing blob (in a storage account's container) every minute.
 
-* Enable static site hosting on the storage account
-  
-    ```bash
-    az storage blob service-properties update --account-name <storage-account-name> \
-        --account-key <storage-account-key> \
-        --static-website \
-        --404-document index.html \
-        --index-document index.html
-    ```
+-----
 
-* Create a .Net Core 3.1 Blazor WASM app as follows:
+## #4: Output binding
 
-    ```bash
-    mkdir $myWebApp && cd $myWebApp
+Create & deploy a function app that create a new blob (in a storage account's container) every minute.
 
-    dotnet new blazorwasm
+[[SOLUTION]](../code-samples/function-app-blob-output/BlobOutputFunction.cs)
 
-    dotnet build
+-----
 
-    # ensure that app is running correctly when executed locally.
-    dotnet run
+## #5: Output binding (multiple outputs)
 
-    dotnet publish -o ./publish
-    ```
+Multiple output blobs created from the same function app.
 
-* Deploy the publish package to app service
+[[SOLUTION]](../code-samples/function-app-blob-images/ImageFunctions.cs)
 
-    ```bash
-    az storage blob upload-batch \
-        -s ./publish/wwwroot \
-        -d '$web' \
-        --account-name <storage-account-name> \
-        --account-key <storage-account-key>
-    ```
+-----
 
-* Fetch the endpoint URL and navigate to it in the browser
+## #6: Output binding (binding expressions)
 
-    ```bash
-    az storage account show -n <storage-account-name> --query "primaryEndpoints.web" --output tsv
-    ```
+Similar to above examples, but output blob names must be timestamped or stamped with random guids.
+
+[[SOLUTION]](../code-samples/function-app-blob-output/BlobOutputBindingExpressionFunction.cs)
+
+-----
+
+## #7: Output binding (runtime binder)
+
+Create & deploy a function app that create a new blob (in a storage account's container) every minute. Output blob names should be in the format: `yyyy-MM-dd-HH-mm-ss.txt`
+
+[[SOLUTION]](../code-samples/function-app-blob-output/BlobOutputRuntimeBinderFunction.cs)
 
 -----

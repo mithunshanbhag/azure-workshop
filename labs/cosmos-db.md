@@ -1,15 +1,45 @@
-# Labs: Cosmos DB
+# COSMOS DB
 
-## #1: Create, update and delete items in a CosmosDB container (using .NET Core SDK)
+## #1: Read from and writing to Cosmos DB documents
 
-[[SOLUTION]](../code-samples/cosmos-db-basics)
+Create a console app (using .NET Core SDK) that demonstrates simple CRUD actions over Cosmos DB documents.
 
------
-
-## #2: [Homework] Use CosmosDB's input & output bindings (change feed) in an Azure function app
+[[SOLUTION]](../code-samples/cosmos-db-basics/)
 
 -----
 
-## #3: [Homework] WeatherForecast REST APIs using Azure Functions and CosmosDB
+## #2: Cosmos DB trigger
 
-* Similar [exercise to this](./function-apps.md#2-http-triggered-function-app), but The APIs should read data from (and write data to) CosmosDB using input & output bindings.
+[[SOLUTION]](../code-samples/function-app-cosmosdb-trigger/CosmosDBTriggerFunction.cs)
+
+-----
+
+## #3: Cosmos DB: input binding (sql query)
+
+[[SOLUTION]](../code-samples/function-app-cosmosdb-input/CosmosDBInputFunctionSqlQuery.cs)
+
+-----
+
+## #4: Cosmos DB: input binding (point query)
+
+[[SOLUTION]](../code-samples/function-app-cosmosdb-input/CosmosDBInputFunctionPointQuery.cs)
+
+-----
+
+## #5: Cosmos DB: input binding (binding expression)
+
+[[SOLUTION]](../code-samples/function-app-cosmosdb-input/CosmosDBInputFunctionBindingExpression.cs)
+
+-----
+
+## #6: Cosmos DB: output binding
+
+[[SOLUTION]](../code-samples/function-app-cosmosdb-output/CosmosDBOutputFunctionPointQuery.cs)
+
+-----
+
+## #7: Cosmos DB: output binding (multiple outputs with IAsyncCollector)
+
+[[SOLUTION]](../code-samples/function-app-cosmosdb-output/CosmosDBMultipleOutputFunction.cs)
+
+-----
