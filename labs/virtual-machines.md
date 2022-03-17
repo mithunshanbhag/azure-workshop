@@ -1,4 +1,4 @@
-# Labs: Virtual Machines
+# Virtual Machines
 
 > NOTE: In the latest release of Azure CLI (2.33.0), all VM creation commands are seemingly broken! [Link to issue](https://github.com/Azure/azure-cli/issues/21224).
 
