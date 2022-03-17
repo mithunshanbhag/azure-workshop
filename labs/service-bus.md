@@ -1,6 +1,32 @@
-# SERVICE BUS
+# Service Bus
 
-## #1: Posting messages to service bus queue
+## #1: Creating service bus queue (using Azure CLI)
+
+* First create the service bus namespace:
+
+    ```bash
+    az servicebus namespace create -n <namespace-name> --sku standard
+    ```
+
+* Then create the queue within that namespace:
+
+    ```bash
+    az servicebus queue create --name <queue-name> --namespace-name <namespace-name>
+    ```
+
+* Fetch the primary connection string:
+
+    ```bash
+    az servicebus namespace authorization-rule keys list \
+    --name RootManageSharedAccessKey \
+    --namespace-name <namespace-name> \
+    --query primaryConnectionString \
+    --output tsv
+    ```
+
+-----
+
+## #2: Posting messages to service bus queue
 
 Create a console app which posts messages (text) to a service bus queue.
 
@@ -8,7 +34,7 @@ Create a console app which posts messages (text) to a service bus queue.
 
 -----
 
-## #2: Receiving messages from service bus queue
+## #3: Receiving messages from service bus queue
 
 Create a console app which receives/dequeues messages from above service bus queue.
 
@@ -16,7 +42,7 @@ Create a console app which receives/dequeues messages from above service bus que
 
 -----
 
-## #3: Publishing to service bus topic
+## #4: Publishing to service bus topic
 
 Create a console app which posts messages (text) to a service bus topic.
 
@@ -32,7 +58,7 @@ Create a console app which receives/dequeues messages from above service bus top
 
 -----
 
-## #5: ServiceBus queue-triggered function
+## #6: ServiceBus queue-triggered function
 
 Create and deploy a function which uses a service bus queue trigger for receiving/processing messages.
 
@@ -40,7 +66,7 @@ Create and deploy a function which uses a service bus queue trigger for receivin
 
 -----
 
-## #6: ServiceBus topic-triggered function
+## #7: ServiceBus topic-triggered function
 
 Create and deploy a function which uses service bus topic + subscription for receiving messages.
 
@@ -48,7 +74,7 @@ Create and deploy a function which uses service bus topic + subscription for rec
 
 -----
 
-## #7: ServiceBus output binding (to queue)
+## #8: ServiceBus output binding (to queue)
 
 Create and deploy a function which writes a message to a service bus queue every 30 seconds.
 
@@ -56,13 +82,13 @@ Create and deploy a function which writes a message to a service bus queue every
 
 -----
 
-## #8: [HomeWork] ServiceBus output binding (to topic)
+## #9: [HomeWork] ServiceBus output binding (to topic)
 
 Create and deploy a function which writes a message to a service bus topic every 30 seconds.
 
 -----
 
-## #9: ServiceBus multiple outputs (using IAsyncCollector)
+## #10: ServiceBus multiple outputs (using IAsyncCollector)
 
 Create and deploy a function which writes multiple messages to a service bus queue every 30 seconds.
 
