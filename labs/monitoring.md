@@ -1,4 +1,4 @@
-# Labs: Azure Monitor
+# MONITORING
 
 ## #1: KQL Query
 
@@ -32,3 +32,5 @@ requests
 ## #3: Metric-based Alerts
 
 Create a metrics-based alert to email you when total blobs in a storage account exceed (say) 5.
+
+-----
