@@ -1,4 +1,4 @@
-# KEY VAULT
+# Key Vault
 
 ## #: Access key vault secrets (using key vault references)
 
