@@ -1,4 +1,4 @@
-# MONITORING
+# Monitoring
 
 ## #1: KQL Query
 
