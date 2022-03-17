@@ -1,4 +1,4 @@
-# Labs: Cosmos DB
+# Provisioning
 
 ## #1: Create and use an Azure service principal (automation account)
 
