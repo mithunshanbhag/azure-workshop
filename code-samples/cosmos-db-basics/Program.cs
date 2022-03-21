@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-namespace AzureFundamentalsWorkshop.CodeSamples.CosmosDB;
+namespace AzureWorkshop.CodeSamples.CosmosDB;
 
 internal class Program
 {

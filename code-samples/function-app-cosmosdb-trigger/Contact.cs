@@ -1,6 +1,6 @@
 using System.Text.Json.Serialization;
 
-namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApps;
+namespace AzureWorkshop.CodeSamples.FunctionApps;
 
 public class Contact
 {

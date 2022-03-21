@@ -8,7 +8,7 @@
       }
     },
     "logLevel": {
-      "AzureFundamentalsWorkshop.CodeSamples.FunctionApps.HttpTriggerFunction": "Information"
+      "AzureWorkshop.CodeSamples.FunctionApps.HttpTriggerFunction": "Information"
     }
   }
 }

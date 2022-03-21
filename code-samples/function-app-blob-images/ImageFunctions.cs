@@ -3,7 +3,7 @@ using Microsoft.Extensions.Logging;
 using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Processing;
 
-namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApps;
+namespace AzureWorkshop.CodeSamples.FunctionApps;
 
 public static class ImageFunctions
 {

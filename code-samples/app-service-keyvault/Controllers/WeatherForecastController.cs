@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace AzureFundamentalsWorkshop.CodeSamples.AppService.Controllers;
+namespace AzureWorkshop.CodeSamples.AppService.Controllers;
 
 [ApiController]
 [Route("[controller]")]

@@ -2,7 +2,7 @@ using System.Text.Json;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Extensions.Logging;
 
-namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApps;
+namespace AzureWorkshop.CodeSamples.FunctionApps;
 
 public static class CosmosDbInputFunctionPointQuery
 {

@@ -4,7 +4,7 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
 
-namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApps;
+namespace AzureWorkshop.CodeSamples.FunctionApps;
 
 public static class HttpTriggerWebhookReceiver
 {

@@ -5,7 +5,7 @@ using System.Net;
 using System.Threading.Tasks;
 using Microsoft.Azure.Cosmos;
 
-namespace AzureFundamentalsWorkshop.CodeSamples.CosmosDB;
+namespace AzureWorkshop.CodeSamples.CosmosDB;
 
 public class CosmosService : IContactService
 {

@@ -2,7 +2,7 @@ using Azure.Extensions.AspNetCore.Configuration.Secrets;
 using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
 
-namespace AzureFundamentalsWorkshop.CodeSamples.AppService;
+namespace AzureWorkshop.CodeSamples.AppService;
 
 public class Program
 {

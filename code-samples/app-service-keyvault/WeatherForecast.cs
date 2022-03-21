@@ -1,4 +1,4 @@
-namespace AzureFundamentalsWorkshop.CodeSamples.AppService;
+namespace AzureWorkshop.CodeSamples.AppService;
 
 public class WeatherForecast
 {

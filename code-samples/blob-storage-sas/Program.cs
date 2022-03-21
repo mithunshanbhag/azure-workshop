@@ -1,7 +1,7 @@
 ﻿using Azure.Storage.Blobs;
 using Azure.Storage.Blobs.Models;
 
-namespace AzureFundamentalsWorkshop.CodeSamples.BlobStorage;
+namespace AzureWorkshop.CodeSamples.BlobStorage;
 
 public class BlobStorageSas
 {

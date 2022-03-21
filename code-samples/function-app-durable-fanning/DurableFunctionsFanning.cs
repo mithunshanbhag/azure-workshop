@@ -3,7 +3,7 @@ using Microsoft.Azure.WebJobs.Extensions.DurableTask;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
 
-namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApps;
+namespace AzureWorkshop.CodeSamples.FunctionApps;
 
 public static class DurableFunctionsFanning
 {

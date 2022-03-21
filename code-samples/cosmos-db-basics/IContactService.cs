@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace AzureFundamentalsWorkshop.CodeSamples.CosmosDB;
+namespace AzureWorkshop.CodeSamples.CosmosDB;
 
 public interface IContactService
 {

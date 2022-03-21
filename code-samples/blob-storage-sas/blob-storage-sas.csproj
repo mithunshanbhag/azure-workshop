@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>AzureFundamentalsWorkshop.CodeSamples.BlobStorage</RootNamespace>
+    <RootNamespace>AzureWorkshop.CodeSamples.BlobStorage</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 

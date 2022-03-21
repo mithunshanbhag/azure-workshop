@@ -1,6 +1,6 @@
 using Newtonsoft.Json;
 
-namespace AzureFundamentalsWorkshop.CodeSamples.CosmosDB;
+namespace AzureWorkshop.CodeSamples.CosmosDB;
 
 public class Contact
 {

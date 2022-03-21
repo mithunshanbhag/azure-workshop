@@ -1,6 +1,6 @@
 ﻿using Azure.Messaging.ServiceBus;
 
-namespace AzureFundamentalsWorkshop.CodeSamples.ServiceBus;
+namespace AzureWorkshop.CodeSamples.ServiceBus;
 
 public class Program
 {

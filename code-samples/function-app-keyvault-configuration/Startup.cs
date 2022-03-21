@@ -1,13 +1,13 @@
 using Azure.Extensions.AspNetCore.Configuration.Secrets;
 using Azure.Identity;
 using Azure.Security.KeyVault.Secrets;
-using AzureFundamentalsWorkshop.CodeSamples.FunctionApps;
+using AzureWorkshop.CodeSamples.FunctionApps;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 
 [assembly: FunctionsStartup(typeof(Startup))]
 
-namespace AzureFundamentalsWorkshop.CodeSamples.FunctionApps;
+namespace AzureWorkshop.CodeSamples.FunctionApps;
 
 public class Startup : FunctionsStartup
 {
