@@ -18,8 +18,10 @@ public class GetContactByIdQueryHandler : IRequestPreProcessor<GetContactByIdQue
         return new OkObjectResult(contactDto);
     }
 
-    public Task Process(GetContactByIdQuery request, CancellationToken cancellationToken)
+    public async Task Process(GetContactByIdQuery query, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var queryValidator = new GetContactByIdQueryValidator();
+
+        await queryValidator.ValidateAndThrowAsync(query, cancellationToken);
     }
 }

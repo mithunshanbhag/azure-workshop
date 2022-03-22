@@ -29,8 +29,10 @@
   <ItemGroup>
     <Folder Include="Commands\Definitions\" />
     <Folder Include="Commands\Handlers\" />
+    <Folder Include="Commands\Validators\" />
     <Folder Include="Exceptions\" />
     <Folder Include="Queries\Handlers\" />
+    <Folder Include="Queries\Validators\" />
     <Folder Include="Repositories\Interfaces\" />
     <Folder Include="Repositories\Implementations\" />
     <Folder Include="Services\Interfaces\" />

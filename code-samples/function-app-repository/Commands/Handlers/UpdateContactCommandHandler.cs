@@ -19,8 +19,10 @@ public class UpdateContactCommandHandler : IRequestPreProcessor<UpdateContactCom
         return new OkResult();
     }
 
-    public Task Process(UpdateContactCommand request, CancellationToken cancellationToken)
+    public async Task Process(UpdateContactCommand command, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var commandValidator = new UpdateContactCommandValidator();
+
+        await commandValidator.ValidateAndThrowAsync(command, cancellationToken);
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace AzureWorkshop.CodeSamples.FunctionApps.Commands.Handlers;
+﻿using AzureWorkshop.CodeSamples.FunctionApps.Commands.Validators;
+
+namespace AzureWorkshop.CodeSamples.FunctionApps.Commands.Handlers;
 
 public class CreateContactCommandHandler : IRequestPreProcessor<CreateContactCommand>, IRequestHandler<CreateContactCommand, IActionResult>
 {
@@ -18,8 +20,10 @@ public class CreateContactCommandHandler : IRequestPreProcessor<CreateContactCom
         return new OkObjectResult(createdContactDto);
     }
 
-    public Task Process(CreateContactCommand request, CancellationToken cancellationToken)
+    public async Task Process(CreateContactCommand command, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var commandValidator = new CreateContactCommandValidator();
+
+        await commandValidator.ValidateAndThrowAsync(command, cancellationToken);
     }
 }

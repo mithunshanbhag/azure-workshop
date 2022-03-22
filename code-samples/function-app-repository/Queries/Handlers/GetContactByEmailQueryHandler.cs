@@ -18,8 +18,10 @@ public class GetContactByEmailQueryHandler : IRequestPreProcessor<GetContactByEm
         return new OkObjectResult(contactDto);
     }
 
-    public Task Process(GetContactByEmailQuery request, CancellationToken cancellationToken)
+    public async Task Process(GetContactByEmailQuery query, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var queryValidator = new GetContactByEmailQueryValidator();
+
+        await queryValidator.ValidateAndThrowAsync(query, cancellationToken);
     }
 }

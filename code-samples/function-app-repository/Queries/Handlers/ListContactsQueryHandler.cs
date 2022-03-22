@@ -16,8 +16,10 @@ public class ListContactsQueryHandler : IRequestPreProcessor<ListContactsQuery>,
         return new OkObjectResult(contactDtos);
     }
 
-    public Task Process(ListContactsQuery request, CancellationToken cancellationToken)
+    public async Task Process(ListContactsQuery query, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var queryValidator = new ListContactsQueryValidator();
+
+        await queryValidator.ValidateAndThrowAsync(query, cancellationToken);
     }
 }

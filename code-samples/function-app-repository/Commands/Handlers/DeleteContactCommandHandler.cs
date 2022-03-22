@@ -18,8 +18,10 @@ public class DeleteContactCommandHandler : IRequestPreProcessor<DeleteContactCom
         return new OkResult();
     }
 
-    public Task Process(DeleteContactCommand request, CancellationToken cancellationToken)
+    public async Task Process(DeleteContactCommand command, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var commandValidator = new DeleteContactCommandValidator();
+
+        await commandValidator.ValidateAndThrowAsync(command, cancellationToken);
     }
 }
