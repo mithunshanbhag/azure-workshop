@@ -40,6 +40,8 @@ public class ContactService : IContactService
     {
         var contactDao = await _contactRepository.GetAsync(contactId.ToString(), contactId.ToString(), cancellationToken);
 
+        if (contactDao is null) throw new ContactNotFoundException(contactId);
+
         var contactDto = _mapper.Map<ContactDto>(contactDao);
 
         return contactDto;

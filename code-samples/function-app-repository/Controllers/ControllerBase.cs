@@ -11,17 +11,17 @@ public abstract class ControllerBase
 
     protected async Task<IActionResult> ProcessRequestAsync(IRequest<IActionResult> request)
     {
-        //try
-        //{
-        return await _mediator.Send(request);
-        //}
-        //catch (CloudSkewException cse)
-        //{
-        //    return cse.ToActionResult();
-        //}
-        //catch (ValidationException ve)
-        //{
-        //    return new BadRequestObjectResult(ve.Message);
-        //}
+        try
+        {
+            return await _mediator.Send(request);
+        }
+        catch (DomainException cse)
+        {
+            return cse.ToActionResult();
+        }
+        catch (ValidationException ve)
+        {
+            return new BadRequestObjectResult(ve.Message);
+        }
     }
 }

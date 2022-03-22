@@ -4,6 +4,6 @@ public class GetContactByIdQueryValidator : AbstractValidator<GetContactByIdQuer
 {
     public GetContactByIdQueryValidator()
     {
-        
+        RuleFor(query => query.ContactId).NotEmpty();
     }
 }

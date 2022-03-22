@@ -4,6 +4,6 @@ public class DeleteContactCommandValidator : AbstractValidator<DeleteContactComm
 {
     public DeleteContactCommandValidator()
     {
-        
+        RuleFor(command => command.ContactId).NotEmpty();
     }
 }

@@ -4,6 +4,6 @@ public class GetContactByEmailQueryValidator : AbstractValidator<GetContactByEma
 {
     public GetContactByEmailQueryValidator()
     {
-        
+        RuleFor(query => query.Email).NotEmpty();
     }
 }

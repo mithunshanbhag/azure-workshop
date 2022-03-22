@@ -1,6 +1,4 @@
-﻿using AzureWorkshop.CodeSamples.FunctionApps.Commands.Validators;
-
-namespace AzureWorkshop.CodeSamples.FunctionApps.Commands.Handlers;
+﻿namespace AzureWorkshop.CodeSamples.FunctionApps.Commands.Handlers;
 
 public class CreateContactCommandHandler : IRequestPreProcessor<CreateContactCommand>, IRequestHandler<CreateContactCommand, IActionResult>
 {

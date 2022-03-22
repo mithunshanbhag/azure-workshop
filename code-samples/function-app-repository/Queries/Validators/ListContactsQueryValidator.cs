@@ -2,8 +2,4 @@
 
 public class ListContactsQueryValidator : AbstractValidator<ListContactsQuery>
 {
-    public ListContactsQueryValidator()
-    {
-        
-    }
 }

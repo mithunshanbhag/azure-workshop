@@ -4,6 +4,9 @@ public class CreateContactCommandValidator : AbstractValidator<CreateContactComm
 {
     public CreateContactCommandValidator()
     {
-        
+        RuleFor(command => command.NewContactDto).NotNull();
+        RuleFor(command => command.NewContactDto.Email).NotEmpty();
+        RuleFor(command => command.NewContactDto.FirstName).NotEmpty();
+        RuleFor(command => command.NewContactDto.LastName).NotEmpty();
     }
 }
