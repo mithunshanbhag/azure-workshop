@@ -53,6 +53,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "function-app-servicebus-tri
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "function-app-trigger-resiliency", "function-app-trigger-resiliency\function-app-trigger-resiliency.csproj", "{CF65D8CC-680F-4E0B-B792-A915897678A4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "function-app-repository", "function-app-repository\function-app-repository.csproj", "{13672FE8-B067-4355-8BC7-6F18BB77E21A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -159,6 +161,10 @@ Global
 		{CF65D8CC-680F-4E0B-B792-A915897678A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CF65D8CC-680F-4E0B-B792-A915897678A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CF65D8CC-680F-4E0B-B792-A915897678A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13672FE8-B067-4355-8BC7-6F18BB77E21A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13672FE8-B067-4355-8BC7-6F18BB77E21A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13672FE8-B067-4355-8BC7-6F18BB77E21A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13672FE8-B067-4355-8BC7-6F18BB77E21A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

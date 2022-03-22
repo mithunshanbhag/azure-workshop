@@ -1,0 +1,13 @@
+﻿global using AzureWorkshop.CodeSamples.FunctionApps.Commands.Definitions;
+global using AzureWorkshop.CodeSamples.FunctionApps.Constants;
+global using AzureWorkshop.CodeSamples.FunctionApps.Models.Dao;
+global using AzureWorkshop.CodeSamples.FunctionApps.Models.Dto;
+global using AzureWorkshop.CodeSamples.FunctionApps.Queries.Definitions;
+global using AzureWorkshop.CodeSamples.FunctionApps.Repositories.Implementations;
+global using AzureWorkshop.CodeSamples.FunctionApps.Repositories.Interfaces;
+global using AzureWorkshop.CodeSamples.FunctionApps.Services.Implementations;
+global using AzureWorkshop.CodeSamples.FunctionApps.Services.Interfaces;
+global using MediatR;
+global using MediatR.Pipeline;
+global using Microsoft.AspNetCore.Mvc;
+global using AutoMapper;
