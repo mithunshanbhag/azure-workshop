@@ -4,7 +4,7 @@ public enum ContactEventType
 {
     Created,
     Updated,
-    Deleted,
+    Deleted
 }
 
 public class ContactEvent
