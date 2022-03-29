@@ -2,6 +2,8 @@
 global using AzureWorkshop.CodeSamples.FunctionApps.Commands.Definitions;
 global using AzureWorkshop.CodeSamples.FunctionApps.Commands.Validators;
 global using AzureWorkshop.CodeSamples.FunctionApps.Constants;
+global using AzureWorkshop.CodeSamples.FunctionApps.EventStream.Implementations;
+global using AzureWorkshop.CodeSamples.FunctionApps.EventStream.Interfaces;
 global using AzureWorkshop.CodeSamples.FunctionApps.Exceptions;
 global using AzureWorkshop.CodeSamples.FunctionApps.Models.Dao;
 global using AzureWorkshop.CodeSamples.FunctionApps.Models.Dto;

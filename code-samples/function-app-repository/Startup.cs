@@ -6,6 +6,7 @@ using AzureWorkshop.CodeSamples.FunctionApps;
 using AzureWorkshop.CodeSamples.FunctionApps.Models;
 using Microsoft.Azure.Cosmos;
 using Microsoft.Azure.Functions.Extensions.DependencyInjection;
+using Microsoft.Extensions.Azure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -22,6 +23,13 @@ public class Startup : FunctionsStartup
         // injecting the cosmosdb client
         var cosmosAccountConnectionString = configuration[KeyVaultSecretNameConstants.CosmosAccountConnectionString];
         builder.Services.AddSingleton(provider => new CosmosClient(cosmosAccountConnectionString).GetDatabase(CosmosConstants.DatabaseName));
+
+        // inject the service bus client
+        builder.Services.AddAzureClients(provider =>
+        {
+            var serviceBusConnectionString = configuration[KeyVaultSecretNameConstants.ServiceBusConnectionString];
+            provider.AddServiceBusClient(serviceBusConnectionString);
+        });
 
         // injecting auto-mapper
         builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
