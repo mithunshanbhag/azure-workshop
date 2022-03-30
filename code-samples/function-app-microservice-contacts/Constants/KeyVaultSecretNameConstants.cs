@@ -3,5 +3,5 @@
 public class KeyVaultSecretNameConstants
 {
     public static readonly string CosmosAccountConnectionString = "CosmosAccountConnectionString";
-    public static readonly string ServiceBusConnectionString = "@todo";
+    public static readonly string ServiceBusConnectionString = "ServiceBusConnectionString";
 }
