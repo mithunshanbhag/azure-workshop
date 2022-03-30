@@ -7,6 +7,7 @@ global using AzureWorkshop.CodeSamples.FunctionApps.EventStream.Interfaces;
 global using AzureWorkshop.CodeSamples.FunctionApps.Exceptions;
 global using AzureWorkshop.CodeSamples.FunctionApps.Models.Dao;
 global using AzureWorkshop.CodeSamples.FunctionApps.Models.Dto;
+global using AzureWorkshop.CodeSamples.FunctionApps.Models.Event;
 global using AzureWorkshop.CodeSamples.FunctionApps.Queries.Definitions;
 global using AzureWorkshop.CodeSamples.FunctionApps.Queries.Validators;
 global using AzureWorkshop.CodeSamples.FunctionApps.Repositories.Implementations;

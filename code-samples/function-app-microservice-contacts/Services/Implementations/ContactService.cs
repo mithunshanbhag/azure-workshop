@@ -4,11 +4,14 @@ public class ContactService : IContactService
 {
     private readonly IContactRepository _contactRepository;
 
+    private readonly IContactEventStream _contactEventStream;
+
     private readonly IMapper _mapper;
 
-    public ContactService(IContactRepository contactRepository, IMapper mapper)
+    public ContactService(IContactRepository contactRepository, IContactEventStream contactEventStream, IMapper mapper)
     {
         _contactRepository = contactRepository;
+        _contactEventStream = contactEventStream;
         _mapper = mapper;
     }
 

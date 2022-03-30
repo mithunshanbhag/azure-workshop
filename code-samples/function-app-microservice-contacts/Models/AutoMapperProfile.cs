@@ -11,6 +11,14 @@ public class AutoMapperProfile : Profile
 
         #endregion
 
+        #region DAO (storage) models to Event models
+
+        CreateMap<ContactDao, ContactEvent>()
+            .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.id))
+            .ForMember(dest => dest.ContactEventType, opt => opt.Ignore());
+
+        #endregion
+
         #region DTO (REST) models to DAO (storage) models
 
         CreateMap<ContactDto, ContactDao>()

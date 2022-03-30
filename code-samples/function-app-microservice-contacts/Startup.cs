@@ -42,6 +42,10 @@ public class Startup : FunctionsStartup
         builder.Services
             .AddScoped<IContactRepository, ContactRepository>();
 
+        // inject the event streams
+        builder.Services
+            .AddScoped<IContactEventStream, ContactEventStream>();
+
         // inject mediatr
         builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
     }
