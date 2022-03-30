@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <AzureFunctionsVersion>v4</AzureFunctionsVersion>
+    <RootNamespace>AzureWorkshop.CodeSamples.FunctionApps</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
+    <PackageReference Include="Azure.Extensions.AspNetCore.Configuration.Secrets" Version="1.2.1" />
+    <PackageReference Include="Azure.Identity" Version="1.5.0" />
+    <PackageReference Include="Azure.Messaging.ServiceBus" Version="7.7.0" />
+    <PackageReference Include="FluentValidation" Version="10.4.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.4.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="10.0.1" />
+    <PackageReference Include="Microsoft.Azure.Cosmos" Version="3.26.1" />
+    <PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="1.1.0" />
+    <PackageReference Include="Microsoft.Extensions.Azure" Version="1.1.1" />
+    <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="4.1.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="host.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="local.settings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\Dao\" />
+    <Folder Include="Models\Dto\" />
+    <Folder Include="Models\Event\" />
+    <Folder Include="Repositories\Implementations\" />
+    <Folder Include="Repositories\Interfaces\" />
+    <Folder Include="Services\Implementations\" />
+  </ItemGroup>
+</Project>
