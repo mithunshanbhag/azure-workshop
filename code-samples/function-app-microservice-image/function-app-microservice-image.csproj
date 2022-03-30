@@ -3,6 +3,7 @@
     <TargetFramework>net6.0</TargetFramework>
     <AzureFunctionsVersion>v4</AzureFunctionsVersion>
     <RootNamespace>AzureWorkshop.CodeSamples.FunctionApps</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
@@ -27,22 +28,11 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Commands\Definitions\" />
-    <Folder Include="Commands\Handlers\" />
-    <Folder Include="Commands\Validators\" />
-    <Folder Include="Constants\" />
-    <Folder Include="EventStream\Implementations\" />
-    <Folder Include="EventStream\Interfaces\" />
-    <Folder Include="Exceptions\" />
     <Folder Include="Models\Dao\" />
     <Folder Include="Models\Dto\" />
     <Folder Include="Models\Event\" />
-    <Folder Include="Queries\Definitions\" />
-    <Folder Include="Queries\Handlers\" />
-    <Folder Include="Queries\Validators\" />
     <Folder Include="Repositories\Implementations\" />
     <Folder Include="Repositories\Interfaces\" />
-    <Folder Include="Services\Interfaces\" />
     <Folder Include="Services\Implementations\" />
   </ItemGroup>
 </Project>

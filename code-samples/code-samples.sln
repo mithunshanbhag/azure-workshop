@@ -55,8 +55,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "function-app-trigger-resili
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "function-app-microservice-userprofile", "function-app-microservice-userprofile\function-app-microservice-userprofile.csproj", "{4EED69A2-F9CA-44E4-80E8-392A4D06363F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "function-app-microservice-image", "function-app-microservice-image\function-app-microservice-image.csproj", "{1A1D073F-0838-413D-9FF1-42F5A5F6BA0B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -167,10 +165,6 @@ Global
 		{4EED69A2-F9CA-44E4-80E8-392A4D06363F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4EED69A2-F9CA-44E4-80E8-392A4D06363F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4EED69A2-F9CA-44E4-80E8-392A4D06363F}.Release|Any CPU.Build.0 = Release|Any CPU
-		{1A1D073F-0838-413D-9FF1-42F5A5F6BA0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{1A1D073F-0838-413D-9FF1-42F5A5F6BA0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1A1D073F-0838-413D-9FF1-42F5A5F6BA0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{1A1D073F-0838-413D-9FF1-42F5A5F6BA0B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

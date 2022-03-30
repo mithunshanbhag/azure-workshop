@@ -20,10 +20,6 @@ public class Startup : FunctionsStartup
     {
         var configuration = builder.GetContext().Configuration;
 
-        // inject the cosmos db client
-        var cosmosAccountConnectionString = configuration[KeyVaultSecretNameConstants.CosmosAccountConnectionString];
-        builder.Services.AddSingleton(provider => new CosmosClient(cosmosAccountConnectionString).GetDatabase(CosmosConstants.DatabaseName));
-
         // inject the service bus client
         builder.Services.AddAzureClients(provider =>
         {
@@ -31,12 +27,12 @@ public class Startup : FunctionsStartup
             provider.AddServiceBusClient(serviceBusConnectionString);
         });
 
-        // inject auto-mapper
+        // injecting auto-mapper
         builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
 
         // inject the services
         builder.Services
-            .AddScoped<IContactService, ContactService>();
+            .AddScoped<IImageService, ContactService>();
 
         // inject the repositories
         builder.Services

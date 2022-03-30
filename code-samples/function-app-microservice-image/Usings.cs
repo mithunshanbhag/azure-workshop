@@ -1,0 +1,17 @@
+﻿global using AutoMapper;
+global using AzureWorkshop.CodeSamples.FunctionApps.Commands.Definitions;
+global using AzureWorkshop.CodeSamples.FunctionApps.Commands.Validators;
+global using AzureWorkshop.CodeSamples.FunctionApps.Constants;
+global using AzureWorkshop.CodeSamples.FunctionApps.EventStream.Implementations;
+global using AzureWorkshop.CodeSamples.FunctionApps.EventStream.Interfaces;
+global using AzureWorkshop.CodeSamples.FunctionApps.Exceptions;
+global using AzureWorkshop.CodeSamples.FunctionApps.Queries.Definitions;
+global using AzureWorkshop.CodeSamples.FunctionApps.Queries.Validators;
+global using AzureWorkshop.CodeSamples.FunctionApps.Repositories.Implementations;
+global using AzureWorkshop.CodeSamples.FunctionApps.Repositories.Interfaces;
+global using AzureWorkshop.CodeSamples.FunctionApps.Services.Implementations;
+global using AzureWorkshop.CodeSamples.FunctionApps.Services.Interfaces;
+global using FluentValidation;
+global using MediatR;
+global using MediatR.Pipeline;
+global using Microsoft.AspNetCore.Mvc;

@@ -1,4 +1,6 @@
-﻿namespace AzureWorkshop.CodeSamples.FunctionApps.Controllers;
+﻿using System.Threading.Tasks;
+
+namespace AzureWorkshop.CodeSamples.FunctionApps.Controllers;
 
 public abstract class ControllerBase
 {
@@ -15,13 +17,13 @@ public abstract class ControllerBase
         {
             return await _mediator.Send(request);
         }
-        catch (DomainException domainException)
+        catch (DomainException cse)
         {
-            return domainException.ToActionResult();
+            return cse.ToActionResult();
         }
-        catch (ValidationException validationException)
+        catch (ValidationException ve)
         {
-            return new BadRequestObjectResult(validationException.Message);
+            return new BadRequestObjectResult(ve.Message);
         }
     }
 }
