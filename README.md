@@ -1,6 +1,6 @@
 # Azure Workshops
 
-## [Azure Fundamentals](https://github.com/mithunshanbhag/azure-workshop/projects/4) | [Azure Serverless](https://github.com/mithunshanbhag/azure-workshop/projects/17) | [Azure Microservices](https://github.com/mithunshanbhag/azure-workshop/projects/16)
+## [Fundamentals](https://github.com/mithunshanbhag/azure-workshop/projects/4) | [Serverless](https://github.com/mithunshanbhag/azure-workshop/projects/17) | [Microservices](https://github.com/mithunshanbhag/azure-workshop/projects/16) | [DevOps](https://github.com/mithunshanbhag/azure-workshop/projects/18)
 
 ## Notes
 
