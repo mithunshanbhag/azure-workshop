@@ -8,7 +8,7 @@ namespace AzureWorkshop.CodeSamples.FunctionApps;
 
 public static class HttpTriggerWebhookReceiver
 {
-    [FunctionName("HttpTriggerWebhookReceiver")] 
+    [FunctionName("HttpTriggerWebhookReceiver")]
     public static async Task<IActionResult> Run(
         [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]
         HttpRequest req,

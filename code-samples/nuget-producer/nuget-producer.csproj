@@ -2,7 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
-		    <RootNamespace>AzureWorkshop.CodeSamples.Nuget</RootNamespace>
+		<RootNamespace>AzureWorkshop.CodeSamples.Nuget</RootNamespace>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
 		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>

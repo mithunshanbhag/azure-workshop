@@ -10,7 +10,8 @@ public static class ServiceBusQueueTriggerFunction
     //[FixedDelayRetry(2, "00:00:05")]
     //[ExponentialBackoffRetry(2, "00:00:05", "00:00:30")]
     public static void Run(
-        [ServiceBusTrigger("myqueue1", Connection = "MyServiceBus")] string myMessage,
+        [ServiceBusTrigger("myqueue1", Connection = "MyServiceBus")]
+        string myMessage,
         int deliveryCount, // message metadata
         string messageId, // message metadata
         ILogger log)
