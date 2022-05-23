@@ -6,9 +6,18 @@
     "azureFunctions.projectSubpath": "code-samples/function-app-dependency-injection",
     "azureFunctions.preDeployTask": "publish",
     "cSpell.words": [
+        "azfunwkrg",
+        "azurerm",
         "datetime",
+        "dotnettools",
+        "eastus",
+        "functionapp",
         "Microservices",
         "mithunshanbhag",
-        "mycontainer"
+        "mkdir",
+        "msazurermtools",
+        "mycontainer",
+        "nupkg",
+        "todouble"
     ]
 }
