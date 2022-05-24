@@ -2,7 +2,7 @@
 
 > Please ensure that you have installed all the [prerequisites related to nuget package publishing](../lab-prerequisites.md).
 
-## #: Publish nuget package (dotnet CLI)
+## #1: Publish nuget package (dotnet CLI)
 
 * Add a nuget.config file to your project, in the same folder as your .csproj or .sln file
 
@@ -22,7 +22,7 @@
     dotnet nuget push --source <FEED_NAME> --api-key <ANY_STRING> <NUPKG_PACKAGE_PATH>
     ```
 
-## #: Consume nuget package (manually)
+## #2: Consume nuget package (manually)
 
 * Add the Azure Artifacts feed to the list of nuget sources
 
@@ -42,10 +42,10 @@
     dotnet restore --interactive
     ```
 
-## #: Publish nuget package (automated)
+## #3: Publish nuget package (automated)
 
 @TODO
 
-## #: Consume nuget package (automated)
+## #4: Consume nuget package (automated)
 
 @TODO

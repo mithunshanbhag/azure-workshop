@@ -8,16 +8,22 @@
     "cSpell.words": [
         "azfunwkrg",
         "azurerm",
+        "Cobertura",
+        "coveragereport",
         "datetime",
         "dotnettools",
         "eastus",
         "functionapp",
+        "globaltool",
         "Microservices",
         "mithunshanbhag",
         "mkdir",
         "msazurermtools",
         "mycontainer",
         "nupkg",
+        "reportgenerator",
+        "reporttypes",
+        "targetdir",
         "todouble"
     ]
 }
