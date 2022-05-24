@@ -6,9 +6,24 @@
     "azureFunctions.projectSubpath": "code-samples/function-app-dependency-injection",
     "azureFunctions.preDeployTask": "publish",
     "cSpell.words": [
+        "azfunwkrg",
+        "azurerm",
+        "Cobertura",
+        "coveragereport",
         "datetime",
+        "dotnettools",
+        "eastus",
+        "functionapp",
+        "globaltool",
         "Microservices",
         "mithunshanbhag",
-        "mycontainer"
+        "mkdir",
+        "msazurermtools",
+        "mycontainer",
+        "nupkg",
+        "reportgenerator",
+        "reporttypes",
+        "targetdir",
+        "todouble"
     ]
 }

@@ -2,9 +2,9 @@
 
 public class ContactService : IContactService
 {
-    private readonly IContactRepository _contactRepository;
-
     private readonly IContactEventStream _contactEventStream;
+
+    private readonly IContactRepository _contactRepository;
 
     private readonly IMapper _mapper;
 

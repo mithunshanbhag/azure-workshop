@@ -24,5 +24,8 @@
 * Install Azure Storage Explorer: [download link](https://azure.microsoft.com/en-in/features/storage-explorer/)
 * Install Azure Functions Core Tools: [instructions](https://docs.microsoft.com/en-us/azure/azure-functions/functions-run-local?tabs=linux%2Ccsharp%2Cbash#v2)
 * Install JPTerm ([instructions](https://github.com/jmespath/jmespath.terminal))
+* For Nuget package publishing:
+  * Install the Azure Artifacts Credentials provider: [instructions](https://github.com/microsoft/artifacts-credprovider#installation-on-windows).
+  * Run `dotnet restore --interactive` in your project folder. This will prompt your for credentials and allow you to authenticate.
 
 Note: After each lab, please ensure that you delete the created resources (so as to not accrue costs).
