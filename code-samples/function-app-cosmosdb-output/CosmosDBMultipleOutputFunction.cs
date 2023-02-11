@@ -8,7 +8,7 @@ public static class CosmosDBMultipleOutputFunction
     [FunctionName("CosmosDBMultipleOutputFunction")]
     public static async Task Run(
         [TimerTrigger("*/30 * * * * *")] TimerInfo myTimer,
-        [CosmosDB("contactsdb", "contactscontainer", ConnectionStringSetting = "AzureWebJobsCosmosDB")]
+        [CosmosDB("contactsdb", "contactscontainer", Connection = "AzureWebJobsCosmosDB")]
         IAsyncCollector<Contact> contactsToWrite,
         ILogger log)
     {

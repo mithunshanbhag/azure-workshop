@@ -59,9 +59,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nuget-producer", "nuget-pro
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nuget-consumer", "nuget-consumer\nuget-consumer.csproj", "{596F06DB-180C-4E01-B8C1-CC20F4CAEDEA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xunit-test", "xunit-test\xunit-test.csproj", "{AF020F0D-E2DC-413C-9035-29BD4741F552}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "xunit-test", "xunit-test\xunit-test.csproj", "{AF020F0D-E2DC-413C-9035-29BD4741F552}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "xunit-sut", "xunit-sut\xunit-sut.csproj", "{2CEE004E-C34C-469D-B0DD-7A61F33BE9BC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "xunit-sut", "xunit-sut\xunit-sut.csproj", "{2CEE004E-C34C-469D-B0DD-7A61F33BE9BC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "function-app-durable-suborchestration", "function-app-durable-suborchestration\function-app-durable-suborchestration.csproj", "{39472364-0AA3-4ED5-8CF7-47AB2E88EE6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -189,6 +191,10 @@ Global
 		{2CEE004E-C34C-469D-B0DD-7A61F33BE9BC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CEE004E-C34C-469D-B0DD-7A61F33BE9BC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CEE004E-C34C-469D-B0DD-7A61F33BE9BC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39472364-0AA3-4ED5-8CF7-47AB2E88EE6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39472364-0AA3-4ED5-8CF7-47AB2E88EE6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39472364-0AA3-4ED5-8CF7-47AB2E88EE6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39472364-0AA3-4ED5-8CF7-47AB2E88EE6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

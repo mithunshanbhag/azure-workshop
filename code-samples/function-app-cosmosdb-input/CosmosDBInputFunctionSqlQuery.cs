@@ -10,7 +10,7 @@ public static class CosmosDbInputFunctionSqlQuery
     public static void UseSqlQuery(
         [TimerTrigger("*/30 * * * * *")] TimerInfo myTimer,
         [CosmosDB("contactsdb", "contactscontainer",
-            ConnectionStringSetting = "AzureWebJobsCosmosDB",
+            Connection = "AzureWebJobsCosmosDB",
             SqlQuery = "select * from c")]
         // replace later as appropriate
         IEnumerable<Contact> contacts,

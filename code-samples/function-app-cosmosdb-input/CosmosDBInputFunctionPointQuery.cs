@@ -10,7 +10,7 @@ public static class CosmosDbInputFunctionPointQuery
     public static void UsePointQuery(
         [TimerTrigger("*/30 * * * * *")] TimerInfo myTimer,
         [CosmosDB("contactsdb", "contactscontainer",
-            ConnectionStringSetting = "AzureWebJobsCosmosDB",
+            Connection = "AzureWebJobsCosmosDB",
             PartitionKey = "12345", // replace later as appropriate
             Id = "12345")]
         // replace later as appropriate

@@ -8,7 +8,7 @@ public static class CosmosDBOutputFunction
     [FunctionName("CosmosDBOutputFunctionSqlQuery")]
     public static void Run(
         [TimerTrigger("*/30 * * * * *")] TimerInfo myTimer,
-        [CosmosDB("contactsdb", "contactscontainer", ConnectionStringSetting = "AzureWebJobsCosmosDB")]
+        [CosmosDB("contactsdb", "contactscontainer", Connection = "AzureWebJobsCosmosDB")]
         out dynamic contact,
         ILogger log)
     {

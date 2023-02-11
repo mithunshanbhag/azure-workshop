@@ -11,7 +11,7 @@ public static class CosmosDbInputFunctionBindingExpression
         [BlobTrigger("mycontainer1/{blobName}")]
         string blob, // replace later as appropriate
         [CosmosDB("contactsdb", "contactscontainer",
-            ConnectionStringSetting = "AzureWebJobsCosmosDB",
+            Connection = "AzureWebJobsCosmosDB",
             SqlQuery = "select * from c where c.LastName = {blobName}")]
         // replace later as appropriate
         IEnumerable<Contact> contacts,

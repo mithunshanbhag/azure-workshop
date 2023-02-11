@@ -9,8 +9,8 @@ public static class CosmosDBTriggerFunction
 {
     [FunctionName("CosmosDBTriggerFunction")]
     public static void Run([CosmosDBTrigger("contactsdb", "contactscontainer",
-            ConnectionStringSetting = "AzureWebJobsCosmosDB",
-            CreateLeaseCollectionIfNotExists = true)]
+            Connection = "AzureWebJobsCosmosDB",
+            CreateLeaseContainerIfNotExists = true)]
         IReadOnlyList<Document> documents,
         ILogger log)
     {
