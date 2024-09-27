@@ -1,20 +1,30 @@
-using Microsoft.Azure.WebJobs;
-using Microsoft.Extensions.Logging;
-
 namespace AzureWorkshop.CodeSamples.FunctionApps;
 
-public static class BlobOutputBindingExpressionFunction
+public class BlobOutputBindingExpressionFunctionDemo(ILogger<BlobOutputBindingExpressionFunctionDemo> logger)
 {
-    [FunctionName("BlobOutputBindingExpressionFunction")]
-    public static void Run(
-        [TimerTrigger("0 */1 * * * *")] TimerInfo myTimer,
-        [Blob("mycontainer1/foo-{datetime}.txt", FileAccess.Write)]
-        out string contentToWrite1,
-        [Blob("mycontainer1/bar-{rand-guid}.txt", FileAccess.Write)]
-        out string contentToWrite2,
-        ILogger log)
+    [Function(nameof(BlobOutputBindingExpressionFunction1))]
+    [BlobOutput("mycontainer1/foo-{datetime}.txt")]
+    public string BlobOutputBindingExpressionFunction1(
+        [TimerTrigger("0 */1 * * * *")] TimerInfo myTimer)
     {
-        log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
-        contentToWrite1 = contentToWrite2 = $"C# Timer trigger function executed at: {DateTime.Now}";
+        var contentToWrite = $"C# Timer trigger function executed at: {DateTime.Now}";
+
+        logger.LogInformation($"Blob content to be written: {contentToWrite}");
+
+        // Blob output
+        return contentToWrite;
+    }
+
+    [Function(nameof(BlobOutputBindingExpressionFunction2))]
+    [BlobOutput("mycontainer1/foo-{rand-guid}.txt")]
+    public string BlobOutputBindingExpressionFunction2(
+        [TimerTrigger("0 */1 * * * *")] TimerInfo myTimer)
+    {
+        var contentToWrite = $"C# Timer trigger function executed at: {DateTime.Now}";
+
+        logger.LogInformation($"Blob content to be written: {contentToWrite}");
+
+        // Blob output
+        return contentToWrite;
     }
 }

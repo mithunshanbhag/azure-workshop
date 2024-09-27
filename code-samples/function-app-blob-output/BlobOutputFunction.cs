@@ -1,18 +1,17 @@
-using Microsoft.Azure.WebJobs;
-using Microsoft.Extensions.Logging;
-
 namespace AzureWorkshop.CodeSamples.FunctionApps;
 
-public static class BlobOutputFunction
+public class BlobOutputFunctionDemo(ILogger<BlobOutputFunctionDemo> logger)
 {
-    [FunctionName("BlobOutputFunction")]
-    public static void Run(
-        [TimerTrigger("0 */1 * * * *")] TimerInfo myTimer,
-        [Blob("mycontainer1/foo.txt", FileAccess.Write)]
-        out string contentToWrite,
-        ILogger log)
+    [Function(nameof(BlobOutputFunction))]
+    [BlobOutput("mycontainer1/foo.txt")]
+    public string BlobOutputFunction(
+        [TimerTrigger("0 */1 * * * *")] TimerInfo myTimer)
     {
-        log.LogInformation($"C# Timer trigger function executed at: {DateTime.Now}");
-        contentToWrite = $"C# Timer trigger function executed at: {DateTime.Now}";
+        var contentToWrite = $"C# Timer trigger function executed at: {DateTime.Now}";
+
+        logger.LogInformation($"Blob content to be written: {contentToWrite}");
+
+        // Blob output
+        return contentToWrite;
     }
 }
