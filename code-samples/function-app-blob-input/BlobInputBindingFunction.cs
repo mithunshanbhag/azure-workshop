@@ -1,18 +1,13 @@
-using Microsoft.Azure.WebJobs;
-using Microsoft.Extensions.Logging;
-
 namespace AzureWorkshop.CodeSamples.FunctionApps;
 
-public static class BlobInputBindingFunction
+public class BlobInputBindingFunctionDemo(ILogger<BlobInputBindingFunctionDemo> logger)
 {
-    [FunctionName("BlobInputBindingFunction")]
-    public static void Run(
+    [Function(nameof(BlobInputBindingFunction))]
+    public void BlobInputBindingFunction(
         [TimerTrigger("*/30 * * * * *")] TimerInfo myTimer,
-        [Blob("mycontainer1/inputfile.txt", FileAccess.Read)]
-        string blobContents,
-        ILogger log)
+        [BlobInput("mycontainer1/inputfile.txt")]
+        string blobContents)
     {
-        log.LogInformation("Function triggered: BlobTriggerFunction");
-        log.LogInformation($"Blob Contents: {blobContents}");
+        logger.LogInformation($"Blob Contents: {blobContents}");
     }
 }
