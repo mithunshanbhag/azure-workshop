@@ -2,8 +2,8 @@
   "IsEncrypted": false,
   "Values": {
     "FUNCTIONS_EXTENSION_VERSION": "~4",
-    "FUNCTIONS_WORKER_RUNTIME": "dotnet",
-    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=azwkstgacct;AccountKey=iJb1Muq4mza2egP1a/HHWnVzjxTXltOm9Iw2E6yIsRarcrvoK+7h3UXnG1VYP2hAMww2a0krNBjw+AStHfpXSw==;EndpointSuffix=core.windows.net"
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true"
   },
   "ConnectionStrings": {}
 }

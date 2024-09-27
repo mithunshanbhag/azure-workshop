@@ -1,19 +1,14 @@
-using Microsoft.Azure.WebJobs;
-using Microsoft.Extensions.Logging;
-
 namespace AzureWorkshop.CodeSamples.FunctionApps;
 
-public static class BlobTriggerFunction
+public class BlobTriggerFunctionDemo(ILogger<BlobTriggerFunctionDemo> logger)
 {
-    [FunctionName("BlobTriggerFunction")]
-    public static void Run(
+    [Function(nameof(BlobTriggerFunction))]
+    public void BlobTriggerFunction(
         [BlobTrigger("mycontainer1/{blobName}")]
         string blobContents,
-        string blobName,
-        ILogger log)
+        string blobName)
     {
-        log.LogInformation("Function triggered: BlobTriggerFunction");
-        log.LogInformation($"Blob Name: {blobName}");
-        log.LogInformation($"Blob Contents: {blobContents}");
+        logger.LogInformation($"Blob Name: {blobName}");
+        logger.LogInformation($"Blob Contents: {blobContents}");
     }
 }
