@@ -63,7 +63,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "xunit-test", "xunit-test\xu
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "xunit-sut", "xunit-sut\xunit-sut.csproj", "{2CEE004E-C34C-469D-B0DD-7A61F33BE9BC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "function-app-durable-suborchestration", "function-app-durable-suborchestration\function-app-durable-suborchestration.csproj", "{39472364-0AA3-4ED5-8CF7-47AB2E88EE6C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "function-app-durable-suborchestration", "function-app-durable-suborchestration\function-app-durable-suborchestration.csproj", "{39472364-0AA3-4ED5-8CF7-47AB2E88EE6C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

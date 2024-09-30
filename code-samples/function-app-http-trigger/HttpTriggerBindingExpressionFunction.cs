@@ -1,21 +1,17 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.Extensions.Logging;
 
 namespace AzureWorkshop.CodeSamples.FunctionApps;
 
-public static class HttpTriggerBindingExpressionFunction
+public class HttpTriggerBindingExpressionFunctionDemo(ILogger<HttpTriggerBindingExpressionFunctionDemo> logger)
 {
-    [FunctionName("HttpTriggerBindingExpressionFunction")]
-    public static IActionResult Run(
+    [Function(nameof(HttpTriggerBindingExpressionFunction))]
+    public IActionResult HttpTriggerBindingExpressionFunction(
         [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = "apiversion/{versionNum}")]
         HttpRequest req,
-        string versionNum,
-        ILogger log)
+        string versionNum)
     {
-        log.LogInformation("C# HTTP trigger function processed a request.");
+        logger.LogInformation("C# HTTP trigger function processed a request.");
 
         var responseMessage = $"Received version number: {versionNum}";
 

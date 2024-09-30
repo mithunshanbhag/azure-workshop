@@ -1,8 +1,7 @@
+using System.Text.Json;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Azure.WebJobs;
-using Microsoft.Azure.WebJobs.Extensions.Http;
-using Microsoft.Extensions.Logging;
-using Newtonsoft.Json;
+using FromBodyAttribute = Microsoft.Azure.Functions.Worker.Http.FromBodyAttribute;
 
 namespace AzureWorkshop.CodeSamples.FunctionApps;
 
@@ -24,17 +23,40 @@ public class WeatherResponse
     public IEnumerable<DailyWeather> DailyReport { get; set; }
 }
 
-public static class HttpTriggerFunctionAdv
+public class HttpTriggerFunctionAdvDemo(ILogger<HttpTriggerFunctionAdvDemo> logger)
 {
-    [FunctionName("HttpTriggerFunctionAdv")]
-    public static ActionResult Run(
-        [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)]
-        WeatherRequest request,
-        ILogger log)
+    [Function(nameof(HttpTriggerFunctionAdv1))]
+    public ActionResult HttpTriggerFunctionAdv1(
+        [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)]
+        HttpRequest req,
+        [FromBody] WeatherRequest request)
     {
-        log.LogInformation($"C# HTTP trigger function received a request: {JsonConvert.SerializeObject(request)}");
+        logger.LogInformation($"C# HTTP trigger function received a request: {JsonSerializer.Serialize(request)}");
 
-        var response = new WeatherResponse
+        var response = GenerateWeatherResponse(request);
+
+        return new OkObjectResult(response);
+    }
+
+   [Function(nameof(HttpTriggerFunctionAdv2))]
+    public async Task<ActionResult> HttpTriggerFunctionAdv2(
+        [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = null)]
+        HttpRequest req)
+    {
+        var reader = new StreamReader(req.Body);
+        var requestBody = await reader.ReadToEndAsync();
+        var request = JsonSerializer.Deserialize<WeatherRequest>(requestBody);
+
+        logger.LogInformation($"C# HTTP trigger function received a request: {JsonSerializer.Serialize(request)}");
+
+        var response = GenerateWeatherResponse(request);
+
+        return new OkObjectResult(response);
+    }
+
+    private static WeatherResponse GenerateWeatherResponse(WeatherRequest request)
+    {
+        return new WeatherResponse
         {
             City = request.City,
             DailyReport = new List<DailyWeather>
@@ -48,7 +70,6 @@ public static class HttpTriggerFunctionAdv
                 new() {Date = DateTime.Today.AddDays(-6), CelciusHigh = 34, CelciusLow = 23}
             }
         };
-
-        return new OkObjectResult(response);
     }
+
 }
